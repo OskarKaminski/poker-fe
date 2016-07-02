@@ -1,0 +1,32 @@
+.card {
+    border: 1px solid;
+    padding: 10px 20px;
+    float: left;
+    background-color: white;
+    position: relative;
+    height: 70px;
+    width: 30px;
+}
+
+.card__left-top-corner,
+.card__right-top-corner,
+.card__left-down-corner,
+.card__right-down-corner{
+    position: absolute;
+}
+.card__left-top-corner {
+    top: 5px;
+    left: 5px;
+}
+.card__right-top-corner {
+    top: 5px;
+    right: 5px;
+}
+.card__left-down-corner {
+    bottom: 5px;
+    left: 5px;
+}
+.card__right-down-corner {
+    bottom: 5px;
+    right: 5px;
+}
