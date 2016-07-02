@@ -1,5 +1,12 @@
+import * as _ from 'lodash';
+
+import {cardService} from '../card/card.service';
+
 export const deckService = {
     getNewDeck: () => {
-        return new Array(52);
+        return deckService.shuffle(cardService.getAllCards());
+    },
+    shuffle: (deck) => {
+        return _.shuffle(deck);
     }
 };

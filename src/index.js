@@ -3,9 +3,9 @@ import {player} from './player/player';
 import {card} from './card/card';
 import {symbol} from './symbol/symbol';
 
-import {cardService} from './services/card/card.service';
+import {deckService} from './services/deck/deck.service';
 
-const deck = cardService.getAllCards();
+const deck = deckService.getNewDeck();
 
 function getRandomCard() {
     const randomCardIndex = Math.floor(Math.random() * 52);
