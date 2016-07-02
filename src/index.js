@@ -1,22 +1,19 @@
+import * as angular from 'angular';
 import {player} from './player/player';
 import {card} from './card/card';
-import * as angular from 'angular';
 
-const cards=[
-    2,3,4,5,6,7,8,9,10,'J','Q','K','A'
-];
-const deck=[
-    ...cards,...cards,...cards,...cards
-];
+import {cardService} from './services/card/card.service';
+
+const deck = cardService.getAllCards();
 
 function getRandomCard() {
-    const randomCardIndex = Math.floor(Math.random()*52);
-    return deck[randomCardIndex];
+    const randomCardIndex = Math.floor(Math.random() * 52);
+    return `${deck[randomCardIndex].value}${deck[randomCardIndex].color[0]}`;
 }
 
-let appCtrl = function(){
-    this.player1=[getRandomCard(),getRandomCard()];
-    this.player2=[getRandomCard(),getRandomCard()];
+let appCtrl = function () {
+    this.player1 = [getRandomCard(), getRandomCard()];
+    this.player2 = [getRandomCard(), getRandomCard()];
 };
 
 let app = {
