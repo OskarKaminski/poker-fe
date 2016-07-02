@@ -5,9 +5,3 @@
 .player2 {
     top: 50px;
 }
-
-.player {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
