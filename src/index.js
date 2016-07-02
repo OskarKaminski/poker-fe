@@ -3,18 +3,18 @@ import {player} from './player/player';
 import {card} from './card/card';
 import {symbol} from './symbol/symbol';
 
-import {deckService} from './services/deck/deck.service';
-
-const deck = deckService.getNewDeck();
-
-function getRandomCard() {
-    const randomCardIndex = Math.floor(Math.random() * 52);
-    return deck[randomCardIndex];
-}
+import {DeckService} from './services/deck/deck.service';
+const deckService = new DeckService();
 
 let appCtrl = function () {
-    this.player1 = [getRandomCard(), getRandomCard()];
-    this.player2 = [getRandomCard(), getRandomCard()];
+    this.player1 = [
+        deckService.pullOutRandomCard(),
+        deckService.pullOutRandomCard()
+    ];
+    this.player2 = [
+        deckService.pullOutRandomCard(),
+        deckService.pullOutRandomCard()
+    ];
 };
 
 let app = {

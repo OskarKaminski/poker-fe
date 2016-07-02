@@ -1,26 +1,47 @@
-import {deckService} from './deck.service';
+import {DeckService} from './deck.service';
 import allCardsMock from '../card/card.mock.json';
 
 describe('Deck service', () => {
 
-    it('Has getNewDeck method', ()=> {
-        expect(deckService.getNewDeck).toBeDefined();
+    const deckService = new DeckService();
+    
+    it('Has deck property', ()=> {
+        expect(deckService.deck).toBeDefined();
     });
 
-    describe('GetNewDeck method', () => {
+    describe('After initialize deck property', () => {
 
-        it('Returns new deck with 52 cards', ()=> {
-            let deck = deckService.getNewDeck();
-            expect(deck.length).toBe(52);
-            expect(deck[0]).toBeDefined();
-            expect(deck[51]).toBeDefined();
+        it('returns new deck with 52 cards', ()=> {
+            expect(deckService.deck.length).toBe(52);
+            expect(deckService.deck[0]).toBeDefined();
+            expect(deckService.deck[51]).toBeDefined();
         });
 
-        it('Returns deck shuffled', ()=> {
-            expect(deckService.getNewDeck()).not.toEqual(allCardsMock.allCards);
+        it('returns deck shuffled', ()=> {
+            expect(deckService.deck).not.toEqual(allCardsMock.allCards);
         });
 
+    });
 
+    it('has pullOutRandomCard method', ()=> {
+        expect(deckService.pullOutRandomCard).toBeDefined();
+    });
+
+    describe('When pullOutRandomCard method is called', () => {
+
+        let card;
+
+        beforeEach(()=>{
+            card = card || deckService.pullOutRandomCard();
+        });
+
+        it('card is returned', ()=> {
+            expect(card).toBeDefined();
+        });
+
+        it('deck property returns 51 cards', ()=> {
+            expect(deckService._deck.length).toBe(51);
+        });
 
     });
 
