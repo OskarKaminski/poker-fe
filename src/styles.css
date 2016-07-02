@@ -1,0 +1,23 @@
+.player1 {
+    bottom: 50px;
+}
+
+.player2 {
+    top: 50px;
+}
+
+.card{
+    border: 1px solid;
+    padding: 10px 20px;
+    font-size: 77px;
+    float: left;
+    margin: -5px;
+    background-color: white;
+}
+
+
+.player {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
