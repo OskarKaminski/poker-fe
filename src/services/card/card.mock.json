@@ -2,160 +2,160 @@
   "allCards": [
     {
       "value": "2",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "3",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "4",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "5",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "6",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "7",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "8",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "9",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "10",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "J",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "Q",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "K",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "A",
-      "color": "heart"
+      "symbol": "hearts"
     },{
       "value": "2",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "3",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "4",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "5",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "6",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "7",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "8",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "9",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "10",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "J",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "Q",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "K",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "A",
-      "color": "diamond"
+      "symbol": "diamonds"
     },{
       "value": "2",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "3",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "4",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "5",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "6",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "7",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "8",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "9",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "10",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "J",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "Q",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "K",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "A",
-      "color": "spade"
+      "symbol": "spades"
     },{
       "value": "2",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "3",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "4",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "5",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "6",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "7",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "8",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "9",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "10",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "J",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "Q",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "K",
-      "color": "club"
+      "symbol": "clubs"
     },{
       "value": "A",
-      "color": "club"
+      "symbol": "clubs"
     }
   ]
 }

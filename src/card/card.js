@@ -7,6 +7,7 @@ export let card = {
     templateUrl: 'src/card/card.html',
     controller: cardCtrl,
     bindings: {
-        symbol: '<'
+        value: '@',
+        symbol: '@'
     }
 };

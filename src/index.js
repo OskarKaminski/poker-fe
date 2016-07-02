@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import {player} from './player/player';
 import {card} from './card/card';
+import {symbol} from './symbol/symbol';
 
 import {cardService} from './services/card/card.service';
 
@@ -8,7 +9,7 @@ const deck = cardService.getAllCards();
 
 function getRandomCard() {
     const randomCardIndex = Math.floor(Math.random() * 52);
-    return `${deck[randomCardIndex].value}${deck[randomCardIndex].color[0]}`;
+    return deck[randomCardIndex];
 }
 
 let appCtrl = function () {
@@ -27,3 +28,4 @@ angular.module('app', []);
 angular.module('app').component('app', app);
 angular.module('app').component('player', player);
 angular.module('app').component('card', card);
+angular.module('app').component('symbol', symbol);

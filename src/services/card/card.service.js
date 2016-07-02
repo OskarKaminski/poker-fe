@@ -5,16 +5,16 @@ const cardValues = [
 ];
 
 const cardColors = [
-    'heart', 'diamond', 'spade', 'club'
+    'hearts', 'diamonds', 'spades', 'clubs'
 ];
 
 export const cardService = {
     getAllCards: function () {
-        return _.flatMap(cardColors, (color)=> {
+        return _.flatMap(cardColors, (symbol)=> {
             return cardValues.map((value)=> {
                 return {
                     value: value,
-                    color: color
+                    symbol: symbol
                 }
             });
         });
