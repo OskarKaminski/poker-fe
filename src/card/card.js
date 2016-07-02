@@ -2,7 +2,7 @@ let cardCtrl = function(){
 
 };
 
-let card = {
+export let card = {
     selector: 'card',
     templateUrl: 'src/card/card.html',
     controller: cardCtrl,
@@ -10,5 +10,3 @@ let card = {
         symbol: '<'
     }
 };
-
-angular.module('app').component('card', card);

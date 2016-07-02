@@ -1,13 +1,23 @@
+var wallabyWebpack = require('wallaby-webpack');
+var wallabyPostprocessor = wallabyWebpack({
+    module: {
+        loaders: [{ test: /\.json$/, loader: 'json' }]
+    }
+});
+
 module.exports = function (wallaby) {
     return {
         files: [
             {pattern: 'node_modules/redux/dist/redux.min.js', instrument: false},
+            {pattern: 'node_modules/angular/angular.min.js', instrument: false},
             {pattern: 'config/deep-freeze.js', instrument: false},
-            'src/*.js', '!src/*.spec.js'
+            {pattern: 'src/**/*.js', load: false},
+            {pattern: 'src/**/*.json', load: false},
+            {pattern: 'src/**/*.spec.js', ignore: true}
         ],
 
         tests: [
-            'src/*.spec.js'
+            {pattern: 'src/**/*.spec.js', load: false}
         ],
 
         compilers: {
@@ -15,6 +25,12 @@ module.exports = function (wallaby) {
                 presets: ['es2015', 'stage-2'],
                 plugins: ['transform-object-assign']
             })
+        },
+
+        postprocessor: wallabyPostprocessor,
+        setup: function () {
+            // required to trigger test loading
+            window.__moduleBundler.loadTests();
         }
     };
 };

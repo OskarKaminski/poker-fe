@@ -1,3 +1,7 @@
+import {player} from './player/player';
+import {card} from './card/card';
+import * as angular from 'angular';
+
 const cards=[
     2,3,4,5,6,7,8,9,10,'J','Q','K','A'
 ];
@@ -24,3 +28,5 @@ let app = {
 
 angular.module('app', []);
 angular.module('app').component('app', app);
+angular.module('app').component('player', player);
+angular.module('app').component('card', card);
