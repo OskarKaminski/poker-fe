@@ -1,0 +1,20 @@
+<div class="board">
+    <div class="cards">
+        <div class="flop" ng-if="$ctrl.flop">
+            <card ng-repeat="card in $ctrl.flop track by $index"
+                  value="{{card.value}}"
+                  symbol="{{card.symbol}}">
+            </card>
+        </div>
+        <div class="turn" ng-if="$ctrl.turn">
+            <card value="{{$ctrl.turn.value}}"
+                  symbol="{{$ctrl.turn.symbol}}">
+            </card>
+        </div>
+        <div class="river" ng-if="$ctrl.river">
+            <card value="{{$ctrl.river.value}}"
+                  symbol="{{$ctrl.river.symbol}}">
+            </card>
+        </div>
+    </div>
+</div>
