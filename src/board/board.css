@@ -3,7 +3,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 450px;
 }
 .cards {
     position: relative;
+    display: flex;
+}
+
+.flop, .turn, .river {
+    margin: 0 10px;
+    text-align: center;
 }

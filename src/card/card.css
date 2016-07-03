@@ -6,6 +6,7 @@
     position: relative;
     height: 70px;
     width: 30px;
+    margin: 3px;
 }
 
 .card__left-top-corner,

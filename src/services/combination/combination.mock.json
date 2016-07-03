@@ -1,0 +1,156 @@
+{
+  "onePair": {
+    "fiveCardsOnePair": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "Q",
+      "color": "spades"
+    }],
+    "fiveCardsOnePairAndThreeOfKind": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }]
+  },
+  "twoPairs": {
+    "fiveCardsTwoPairs": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }],
+    "sevenCardsTwoPairs": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "5",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "K",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }]
+  },
+  "threeOfKind": {
+    "fiveCardsThreeOfKind": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }],
+    "sevenCardsFullHouse": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "K",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }]
+  },
+  "threeOfKindLessOrMoreThanOne": {
+    "fiveCardsNoThreeOfKind": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "7",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }],
+    "sevenCardsTwoTimesThreeOfKind": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }]
+  }
+}
