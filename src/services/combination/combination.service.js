@@ -23,5 +23,16 @@ export const combinationService = {
         return _.reduce(grouped, (sum, val) => {
             return val.length === 3 ? sum + 1 : sum
         }, 0);
+    },
+    fourOfKind: (array) => {
+        let values = _.map(array, (el) => {
+            return el.value;
+        });
+
+        let grouped = _.groupBy(values);
+
+        return _.reduce(grouped, (sum, val) => {
+            return val.length === 4 ? sum + 1 : sum
+        }, 0);
     }
 };

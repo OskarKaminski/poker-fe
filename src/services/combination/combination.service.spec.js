@@ -53,4 +53,28 @@ describe('Combination service', () => {
         
     });
 
+    it('has method fourOfKind', () => {
+        expect(combinationService.fourOfKind).toBeDefined();
+    });
+    
+    describe('FourOfKind method', () => {
+        
+        let inputs = mocks.fourOfKind;
+        
+        _.map(inputs, (input, key) => {
+            it(`returns 1 when the input has ${key}`, ()=> {
+                expect(combinationService.fourOfKind(input)).toBe(1);
+            });
+        });
+
+        let noFourOfKindInput = mocks.threeOfKind;
+
+        _.map(noFourOfKindInput, (input, key) => {
+            it(`returns 0 when the input has ${key}`, ()=> {
+                expect(combinationService.fourOfKind(input)).toBe(0);
+            });
+        });
+        
+    });
+
 });

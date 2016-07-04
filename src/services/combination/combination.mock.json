@@ -152,5 +152,45 @@
       "value": "A",
       "color": "spades"
     }]
+  },
+  "fourOfKind": {
+    "fiveCardsFourOfKind": [{
+      "value": "3",
+      "color": "spades"
+    }, {
+      "value": "3",
+      "color": "spades"
+    }, {
+      "value": "3",
+      "color": "spades"
+    }, {
+      "value": "3",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }],
+    "sevenCardsFourOfKind": [{
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "2",
+      "color": "spades"
+    }, {
+      "value": "J",
+      "color": "spades"
+    }, {
+      "value": "A",
+      "color": "spades"
+    }]
   }
 }
