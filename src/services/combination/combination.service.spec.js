@@ -10,20 +10,12 @@ describe('Combination service', () => {
 
     describe('Pair method', () => {
 
-        let inputs = mocks.onePair;
-
-        _.map(inputs, (input, key) => {
-            it(`returns 1 when input has ${key}`, ()=> {
-                expect(combinationService.pair(input)).toBe(1);
-            });
+        it(`returns 1 when input has one pair`, ()=> {
+            expect(combinationService.pair(mocks.onePair)).toBe(1);
         });
 
-        inputs = mocks.twoPairs;
-
-        _.map(inputs, (input, key) => {
-            it(`returns 2 when input array has ${key}`, ()=> {
-                expect(combinationService.pair(input)).toBe(2);
-            });
+        it(`returns 2 when input array has two pairs`, ()=> {
+            expect(combinationService.pair(mocks.twoPairs)).toBe(2);
         });
 
     });
@@ -34,20 +26,12 @@ describe('Combination service', () => {
     
     describe('ThreeOfKind method', () => {
 
-        let inputs = mocks.threeOfKind;
-        
-        _.map(inputs, (input, key) => {
-            it(`returns 1 when input has ${key}`, ()=> {
-                expect(combinationService.threeOfKind(input)).toBe(1);
-            });
+        it(`returns 1 when input has three of kind`, ()=> {
+            expect(combinationService.threeOfKind(mocks.threeOfKind)).toBe(1);
         });
         
-        inputs = mocks.threeOfKindLessOrMoreThanOne;
-        
-        _.map(inputs, (input, key) => {
-            it(`returns different than 1 when input has ${key}`, ()=> {
-                expect(combinationService.threeOfKind(input)).not.toBe(1);
-            });
+        it(`returns 0 when input has one pair`, ()=> {
+            expect(combinationService.threeOfKind(mocks.onePair)).toBe(0);
         });
         
     });
@@ -58,42 +42,74 @@ describe('Combination service', () => {
     
     describe('FourOfKind method', () => {
         
-        let inputs = mocks.fourOfKind;
-        
-        _.map(inputs, (input, key) => {
-            it(`returns 1 when the input has ${key}`, ()=> {
-                expect(combinationService.fourOfKind(input)).toBe(1);
-            });
+        it(`returns 1 when the input has four of kind`, ()=> {
+            expect(combinationService.fourOfKind(mocks.fourOfKind)).toBe(1);
         });
 
-        let noFourOfKindInput = mocks.threeOfKind;
-
-        _.map(noFourOfKindInput, (input, key) => {
-            it(`returns 0 when the input has ${key}`, ()=> {
-                expect(combinationService.fourOfKind(input)).toBe(0);
-            });
+        it(`returns 0 when the input has only three of kind`, ()=> {
+            expect(combinationService.fourOfKind(mocks.threeOfKind)).toBe(0);
         });
         
     });
 
     describe('Straight method', () => {
 
-        let straightInput = mocks.straight;
-
         it(`returns 1 when the input has straight`, ()=> {
-            expect(combinationService.straight(straightInput)).toBe(1);
+            expect(combinationService.straight(mocks.straight)).toBeTruthy();
         });
 
-        let noStraightInput = mocks.fourOfKind.fiveCardsFourOfKind;
-
         it(`returns 0 when the input has no straight`, ()=> {
-            expect(combinationService.straight(noStraightInput)).toBe(0);
+            expect(combinationService.straight(mocks.fourOfKind)).toBeFalsy();
         });
 
-        let noStraightInput2 = mocks.almostStraight;
+    });
 
-        it(`returns 0 when the input has no straight`, ()=> {
-            expect(combinationService.straight(noStraightInput2)).toBe(0);
+    it(`has method color`, ()=> {
+        expect(combinationService.color).toBeDefined();
+    });
+
+    describe('Color method', () => {
+
+        it(`returns true if there is five cards with the same color`, ()=> {
+            expect(combinationService.color(mocks.color)).toBeTruthy()
+        });
+        
+        it(`returns false if there is five cards arent the same color`, ()=> {
+            expect(combinationService.color(mocks.straight)).toBeFalsy()
+        });
+
+    });
+    
+    it(`has method fullHouse`, ()=> {
+        expect(combinationService.fullHouse).toBeDefined();
+    });
+
+    describe('FullHouse method', () => {
+    
+        it(`returns true if there is full house`, ()=> {
+            expect(combinationService.fullHouse(mocks.fullHouse)).toBeTruthy();
+        });
+       
+        it(`returns false if there is no full house`, ()=> {
+            expect(combinationService.fullHouse(mocks.threeOfKind)).toBeFalsy();
+            expect(combinationService.fullHouse(mocks.onePair)).toBeFalsy();
+        });
+    
+    });
+
+    it(`has method poker`, ()=> {
+        expect(combinationService.poker).toBeDefined();
+    });
+
+    describe('Poker method', () => {
+
+        it(`returns true if there is poker`, ()=> {
+            expect(combinationService.poker(mocks.poker)).toBeTruthy();
+        });
+
+        it(`returns false if there is no poker`, ()=> {
+            expect(combinationService.poker(mocks.color)).toBeFalsy();
+            expect(combinationService.poker(mocks.straight)).toBeFalsy();
         });
 
     });

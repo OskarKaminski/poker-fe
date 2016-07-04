@@ -50,6 +50,22 @@ export const combinationService = {
 
             return current;
         }, 0);
-        return counter >= 4 ? 1: 0;
+        return counter >= 4;
+    },
+    color: (array) => {
+        let colors = _.map(array, (el) => {
+            return el.color;
+        });
+        let grouped = _.groupBy(colors);
+
+        return _.reduce(grouped, (sum, val) => {
+            return val.length >= 5 ? sum + 1 : sum
+        }, 0);
+    },
+    fullHouse: (array) => {
+        return combinationService.pair(array) && combinationService.threeOfKind(array);
+    },
+    poker: (array) => {
+        return combinationService.color(array) && combinationService.straight(array);
     }
 };
