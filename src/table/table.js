@@ -1,23 +1,13 @@
-import {DeckService} from '../services/deck/deck.service';
+import {GameService} from '../services/game/game.service';
 
-const deckService = new DeckService();
+const gameService = new GameService();
 
 let tableCtrl = function(){
-    this.player1 = [
-        deckService.pullOutRandomCard(),
-        deckService.pullOutRandomCard()
-    ];
-    this.player2 = [
-        deckService.pullOutRandomCard(),
-        deckService.pullOutRandomCard()
-    ];
-    this.flop = [
-        deckService.pullOutRandomCard(),
-        deckService.pullOutRandomCard(),
-        deckService.pullOutRandomCard()
-    ];
-    this.turn = deckService.pullOutRandomCard();
-    this.river = deckService.pullOutRandomCard();
+    this.player1 = gameService.pullOutPlayerCards('Oskar');
+    this.player2 = gameService.pullOutPlayerCards('Computer');
+    this.flop = gameService.pullOutFlop();
+    this.turn = gameService.pullOutTurn();
+    this.river = gameService.pullOutRiver();
 };
 
 export let table = {
