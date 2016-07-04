@@ -4,18 +4,26 @@ import mocks from './combination.mock.json';
 
 describe('Combination service', () => {
 
-    it('has method pair', ()=> {
-        expect(combinationService.pair).toBeDefined();
+    it('has method onePair', ()=> {
+        expect(combinationService.onePair).toBeDefined();
     });
 
-    describe('Pair method', () => {
+    describe('OnePair method', () => {
 
         it(`returns 1 when input has one pair`, ()=> {
-            expect(combinationService.pair(mocks.onePair)).toBe(1);
+            expect(combinationService.onePair(mocks.onePair)).toBeTruthy();
         });
 
+    });
+    
+    it('has method twoPairs', ()=> {
+        expect(combinationService.twoPairs).toBeDefined();
+    });
+
+    describe('TwoPairs method', () => {
+
         it(`returns 2 when input array has two pairs`, ()=> {
-            expect(combinationService.pair(mocks.twoPairs)).toBe(2);
+            expect(combinationService.twoPairs(mocks.twoPairs)).toBeTruthy();
         });
 
     });
@@ -114,6 +122,49 @@ describe('Combination service', () => {
         it(`returns false if there is no poker`, ()=> {
             expect(combinationService.poker(mocks.color)).toBeFalsy();
             expect(combinationService.poker(mocks.straight)).toBeFalsy();
+        });
+
+    });
+    
+    it(`has method checkCombination`, ()=> {
+        expect(combinationService.checkCombination).toBeDefined();
+    });
+
+    describe('CheckCombination method', () => {
+
+        it(`returns 'color' for color combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.color))
+                .toBe('color');
+        });
+        
+        it(`returns 'straight' for straight combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.straight))
+                .toBe('straight');
+        });
+        
+        it(`returns 'poker' for poker combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.poker))
+                .toBe('poker');
+        });
+        
+        it(`returns 'full house' for full house combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.fullHouse))
+                .toBe('full house');
+        });
+        
+        it(`returns 'three of a kind' for three of a kind combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.threeOfKind))
+                .toBe('three of a kind');
+        });
+        
+        it(`returns 'two pairs' for two pairs combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.twoPairs))
+                .toBe('two pairs');
+        });
+        
+        it(`returns 'one pair' for one pair combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.onePair))
+                .toBe('one pair');
         });
 
     });

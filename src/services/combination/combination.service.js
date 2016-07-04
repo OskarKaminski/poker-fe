@@ -1,17 +1,64 @@
 import _ from 'lodash';
 
 export const combinationService = {
+    checkCombination: (array) => {
+        const combinations = [
+            {
+                name: 'poker',
+                fnName: 'poker'
+            },
+            {
+                name: 'full house',
+                fnName: 'fullHouse'
+            },
+            {
+                name: 'color',
+                fnName: 'color'
+            },
+            {
+                name: 'straight',
+                fnName: 'straight'
+            },
+            {
+                name: 'three of a kind',
+                fnName: 'threeOfKind'
+            },
+            {
+                name: 'two pairs',
+                fnName: 'twoPairs'
+            },
+            {
+                name: 'one pair',
+                fnName: 'pair'
+            }
+        ];
+
+
+        for(let i = 0; i<combinations.length; i++) {
+            let combination = combinations[i];
+            
+            if (combinationService[combination.fnName](array)) {
+                return combination.name;
+            }
+        }
+    },
     pair: (array) => {
-        
+
         let values = _.map(array, (el) => {
             return el.value;
         });
-        
+
         let grouped = _.groupBy(values);
-        
+
         return _.reduce(grouped, (sum, val) => {
             return val.length === 2 ? sum + 1 : sum
         }, 0);
+    },
+    onePair: (array) => {
+        return combinationService.pair(array) >= 1;
+    },
+    twoPairs: (array) => {
+        return combinationService.pair(array) >= 2;
     },
     threeOfKind: (array) => {
         let values = _.map(array, (el) => {
@@ -38,7 +85,7 @@ export const combinationService = {
     straight: (array) => {
         let values = _.map(array, (el) => {
             return el.value;
-        }).sort((a,b)=>{
+        }).sort((a, b)=> {
             return a - b;
         });
 
@@ -50,7 +97,7 @@ export const combinationService = {
                 counter++;
             }
 
-            if(current === 14 && values[0] === 2){
+            if (current === 14 && values[0] === 2) {
                 counter++;
             }
 
