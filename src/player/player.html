@@ -1,3 +1,6 @@
 <card ng-repeat="card in $ctrl.cards track by $index"
       value="{{card.value}}"
       symbol="{{card.symbol}}"></card>
+<div class="combination">
+    <p>Your combination: {{$ctrl.combination}}</p>
+</div>

@@ -2,6 +2,7 @@ export let player = {
     selector: 'player',
     templateUrl: 'src/player/player.html',
     bindings: {
-        cards: '<'
+        cards: '<',
+        combination: '<'
     }
 };

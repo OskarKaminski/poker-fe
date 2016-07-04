@@ -3,218 +3,240 @@
       {
         "label": "2",
         "value": 2,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "5",
         "value": 5,
-        "color": "hearts"
+        "symbol": "hearts"
       },
       {
         "label": "2",
         "value": 2,
-        "color": "clubs"
+        "symbol": "clubs"
       },
       {
         "label": "J",
         "value": 11,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "Q",
         "value": 12,
-        "color": "spades"
+        "symbol": "spades"
       }
     ],
   "twoPairs": [
       {
         "label": "2",
         "value": 2,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "5",
         "value": 5,
-        "color": "clubs"
+        "symbol": "clubs"
       },
       {
         "label": "2",
         "value": 2,
-        "color": "diamonds"
+        "symbol": "diamonds"
       },
       {
         "label": "J",
         "value": 11,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "J",
         "value": 11,
-        "color": "hearts"
+        "symbol": "hearts"
       }
     ],
   "threeOfKind": [
       {
         "label": "2",
         "value": 2,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "2",
         "value": 2,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "2",
         "value": 2,
-        "color": "hearts"
+        "symbol": "hearts"
       },
       {
         "label": "J",
         "value": 11,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "A",
         "value": 14,
-        "color": "spades"
+        "symbol": "spades"
       }
     ],
   "fourOfKind": [
       {
         "label": "3",
         "value": 3,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "3",
         "value": 3,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "3",
         "value": 3,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "3",
         "value": 3,
-        "color": "spades"
+        "symbol": "spades"
       },
       {
         "label": "A",
         "value": 14,
-        "color": "spades"
+        "symbol": "spades"
       }
     ],
   "straight": [
     {
       "value": 9,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 10,
-      "color": "diamonds"
+      "symbol": "diamonds"
     },
     {
       "value": 11,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 12,
-      "color": "hearts"
+      "symbol": "hearts"
     },
     {
       "value": 13,
-      "color": "spades"
+      "symbol": "spades"
     }
   ],
   "smallStraight": [
     {
       "value": 14,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 2,
-      "color": "diamonds"
+      "symbol": "diamonds"
     },
     {
       "value": 3,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 4,
-      "color": "hearts"
+      "symbol": "hearts"
     },
     {
       "value": 5,
-      "color": "spades"
+      "symbol": "spades"
     }
   ],
   "color": [
     {
       "value": 3,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 10,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 11,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 12,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 13,
-      "color": "spades"
+      "symbol": "spades"
     }
   ],
   "fullHouse": [
     {
       "value": 2,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 2,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 2,
-      "color": "hearts"
+      "symbol": "hearts"
     },
     {
       "value": 11,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 11,
-      "color": "spades"
+      "symbol": "spades"
     }
   ],
   "poker": [
     {
       "value": 9,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 10,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 11,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 12,
-      "color": "spades"
+      "symbol": "spades"
     },
     {
       "value": 13,
-      "color": "spades"
+      "symbol": "spades"
+    }
+  ],
+  "highCard": [
+    {
+      "value": 9,
+      "symbol": "diamonds"
+    },
+    {
+      "value": 3,
+      "symbol": "spades"
+    },
+    {
+      "value": 11,
+      "symbol": "spades"
+    },
+    {
+      "value": 12,
+      "symbol": "spades"
+    },
+    {
+      "value": 13,
+      "symbol": "spades"
     }
   ]
 }

@@ -8,7 +8,7 @@ let cardCtrl = function(){
 
     this.$onInit = () => {
         this.label = this.getLabel();
-    }
+    };
 
     this.getLabel = () => {
         return this.labels[this.value] || this.value;

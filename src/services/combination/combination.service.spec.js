@@ -83,11 +83,11 @@ describe('Combination service', () => {
     describe('Color method', () => {
 
         it(`returns true if there is five cards with the same color`, ()=> {
-            expect(combinationService.color(mocks.color)).toBeTruthy()
+            expect(combinationService.color(mocks.color)).toBeTruthy();
         });
         
         it(`returns false if there is five cards arent the same color`, ()=> {
-            expect(combinationService.color(mocks.straight)).toBeFalsy()
+            expect(combinationService.color(mocks.straight)).toBeFalsy();
         });
 
     });
@@ -165,6 +165,11 @@ describe('Combination service', () => {
         it(`returns 'one pair' for one pair combination`, ()=> {
             expect(combinationService.checkCombination(mocks.onePair))
                 .toBe('one pair');
+        });
+        
+        it(`returns 'high card' for no combination`, ()=> {
+            expect(combinationService.checkCombination(mocks.highCard))
+                .toBe('high card');
         });
 
     });

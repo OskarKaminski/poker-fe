@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 export const combinationService = {
     checkCombination: (array) => {
+
         const combinations = [
             {
                 name: 'poker',
@@ -36,11 +37,13 @@ export const combinationService = {
 
         for(let i = 0; i<combinations.length; i++) {
             let combination = combinations[i];
-            
+
             if (combinationService[combination.fnName](array)) {
                 return combination.name;
             }
         }
+
+        return 'high card';
     },
     pair: (array) => {
 
@@ -107,7 +110,7 @@ export const combinationService = {
     },
     color: (array) => {
         let colors = _.map(array, (el) => {
-            return el.color;
+            return el.symbol;
         });
         let grouped = _.groupBy(colors);
 
