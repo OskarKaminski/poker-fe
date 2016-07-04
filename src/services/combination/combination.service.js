@@ -38,13 +38,19 @@ export const combinationService = {
     straight: (array) => {
         let values = _.map(array, (el) => {
             return el.value;
+        }).sort((a,b)=>{
+            return a - b;
         });
-        
+
         values = _.sortedUniq(values);
         let counter = 0;
         _.reduce(values, (previous, current) => {
 
             if (previous + 1 === current) {
+                counter++;
+            }
+
+            if(current === 14 && values[0] === 2){
                 counter++;
             }
 

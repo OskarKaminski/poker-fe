@@ -58,6 +58,10 @@ describe('Combination service', () => {
             expect(combinationService.straight(mocks.straight)).toBeTruthy();
         });
 
+        it(`returns 1 when the input has small straight`, ()=> {
+            expect(combinationService.straight(mocks.smallStraight)).toBeTruthy(); 
+        });
+
         it(`returns 0 when the input has no straight`, ()=> {
             expect(combinationService.straight(mocks.fourOfKind)).toBeFalsy();
         });

@@ -129,6 +129,28 @@
       "color": "spades"
     }
   ],
+  "smallStraight": [
+    {
+      "value": 14,
+      "color": "spades"
+    },
+    {
+      "value": 2,
+      "color": "diamonds"
+    },
+    {
+      "value": 3,
+      "color": "spades"
+    },
+    {
+      "value": 4,
+      "color": "hearts"
+    },
+    {
+      "value": 5,
+      "color": "spades"
+    }
+  ],
   "color": [
     {
       "value": 3,
