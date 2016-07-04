@@ -18,7 +18,6 @@ describe('Combination service', () => {
             });
         });
 
-
         inputs = mocks.twoPairs;
 
         _.map(inputs, (input, key) => {
@@ -75,6 +74,28 @@ describe('Combination service', () => {
             });
         });
         
+    });
+
+    describe('Straight method', () => {
+
+        let straightInput = mocks.straight;
+
+        it(`returns 1 when the input has straight`, ()=> {
+            expect(combinationService.straight(straightInput)).toBe(1);
+        });
+
+        let noStraightInput = mocks.fourOfKind.fiveCardsFourOfKind;
+
+        it(`returns 0 when the input has no straight`, ()=> {
+            expect(combinationService.straight(noStraightInput)).toBe(0);
+        });
+
+        let noStraightInput2 = mocks.almostStraight;
+
+        it(`returns 0 when the input has no straight`, ()=> {
+            expect(combinationService.straight(noStraightInput2)).toBe(0);
+        });
+
     });
 
 });
