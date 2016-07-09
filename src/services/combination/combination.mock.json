@@ -1,81 +1,66 @@
 {
   "onePair": [
       {
-        "label": "2",
         "value": 2,
         "symbol": "spades"
       },
       {
-        "label": "5",
         "value": 5,
         "symbol": "hearts"
       },
       {
-        "label": "2",
         "value": 2,
         "symbol": "clubs"
       },
       {
-        "label": "J",
         "value": 11,
         "symbol": "spades"
       },
       {
-        "label": "Q",
         "value": 12,
         "symbol": "spades"
       }
     ],
   "twoPairs": [
       {
-        "label": "2",
         "value": 2,
         "symbol": "spades"
       },
       {
-        "label": "5",
         "value": 5,
         "symbol": "clubs"
       },
       {
-        "label": "2",
         "value": 2,
         "symbol": "diamonds"
       },
       {
-        "label": "J",
         "value": 11,
         "symbol": "spades"
       },
       {
-        "label": "J",
         "value": 11,
         "symbol": "hearts"
       }
     ],
   "threeOfKind": [
       {
-        "label": "2",
         "value": 2,
         "symbol": "spades"
       },
       {
-        "label": "2",
         "value": 2,
         "symbol": "spades"
       },
       {
-        "label": "2",
         "value": 2,
         "symbol": "hearts"
       },
       {
-        "label": "J",
         "value": 11,
         "symbol": "spades"
       },
       {
-        "label": "A",
         "value": 14,
         "symbol": "spades"
       }
