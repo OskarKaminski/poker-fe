@@ -1,10 +1,16 @@
 import _ from 'lodash';
 
 export const resultService = {
+    checkResult: () => {
+        resultService.bestCombination();
+    },
+    bestCombination: (array) => {
+
+        return [2, 1, 0];
+    },
     bestValue: (values) => {
         const maxIterations = values[0].length;
         values = resultService.preFormatting(values);
-        console.log(values);
         return resultService.recursiveCompareArrays(values, 0, maxIterations);
     },
 

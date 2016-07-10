@@ -1,6 +1,72 @@
 import {resultService} from './result.service';
 
 describe('Result Service', () => {
+    
+    it(`has method checkResult`, ()=> {
+        expect(resultService.checkResult).toBeDefined();
+    });
+    
+    describe('Method checkResult', () => {
+        
+        it(`calles method bestCombination`, ()=> {
+            spyOn(resultService, 'bestCombination');
+            resultService.checkResult();
+            expect(resultService.bestCombination).toHaveBeenCalled();
+        });
+        
+    });
+    
+    describe('Method bestCombination', () => {
+
+        describe(`Returns combination indexes sorted
+        from the strongest to the weakest`, ()=> {
+
+            it(`for different combinations`, ()=> {
+                const combinations = [
+                    {
+                        combinationId: 1,
+                        value: [12, 12],
+                        kicker: 5
+                    }, {
+                        combinationId: 2,
+                        value: [12, 12],
+                        kicker: 5
+                    }, {
+                        combinationId: 3,
+                        value: [12, 12],
+                        kicker: 5
+                    }
+                ];
+
+                expect(resultService.bestCombination(combinations))
+                    .toEqual([2, 1, 0]);
+            });
+        });
+
+        describe(`Nested array if two combinations are equal`, ()=> {
+
+            it(`for the same combinations`, ()=> {
+                const combinations = [
+                    {
+                        combinationId: 1,
+                        value: [12, 12],
+                        kicker: 5
+                    }, {
+                        combinationId: 1,
+                        value: [12, 12],
+                        kicker: 5
+                    }, {
+                        combinationId: 3,
+                        value: [12, 12],
+                        kicker: 5
+                    }
+                ];
+
+                expect(resultService.bestCombination(combinations))
+                    .toEqual([2, [1, 0]]);
+            });
+        });
+    });
 
     describe(`Best kicker method returns`, () => {
         
