@@ -185,9 +185,9 @@
       "expected": {
         "id": 3,
         "value": 3,
-        "kicker": [
+        "kickers": [
           12,
-          11
+          5
         ]
       }
     }

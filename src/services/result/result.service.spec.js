@@ -10,10 +10,60 @@ describe('Result Service', () => {
 
     describe('Method checkResult', () => {
 
-        it(`calles method bestCombination`, ()=> {
+        xit(`calles method bestCombination`, ()=> {
             spyOn(resultService, 'bestCombination');
             resultService.checkResult();
             expect(resultService.bestCombination).toHaveBeenCalled();
+        });
+
+        it(`returns the best combination for different combinations`, ()=> {
+            const combinations = [
+                mocks.onePair[0].expected,
+                mocks.color[0].expected,
+                mocks.threeOfKind[0].expected
+            ];
+            expect(resultService.checkResult(combinations))
+                .toEqual(mocks.color[0].expected);
+        });
+
+        it(`returns the best combination for two colors`, ()=> {
+            const combinations = [
+                mocks.color[0].expected,
+                {
+                    ...mocks.color[0].expected,
+                    value: 14
+                }
+            ];
+
+            expect(resultService.checkResult(combinations))
+                .toEqual(combinations[1]);
+        });
+
+        it(`returns the best combination for two threes of a kind`, ()=> {
+            const combinations = [
+                mocks.threeOfKind[0].expected,
+                {
+                    ...mocks.threeOfKind[0].expected,
+                    value: 2
+                }
+            ];
+
+            expect(resultService.checkResult(combinations))
+                .toEqual(combinations[0]);
+        });
+
+        it(`returns the best combination for two threes of a kind
+        with the same value and different kickers`, ()=> {
+            const combinations = [
+                mocks.threeOfKind[0].expected,
+                {
+                    ...mocks.threeOfKind[0].expected,
+                    kickers: [12, 6]
+                }
+            ];
+
+            expect(resultService.checkResult(combinations))
+                .toEqual(combinations[1]);
         });
 
     });
@@ -55,6 +105,32 @@ describe('Result Service', () => {
                     {
                         id: 1,
                         pairs: 12,
+                        kickers: [11, 6]
+                    },
+                    {
+                        id: 1,
+                        pair: 12,
+                        kickers: [3, 10]
+                    },
+                    {
+                        id: 1,
+                        pair: 12,
+                        kickers: [8, 5]
+                    }
+                ];
+                expect(resultService.bestKicker(combinations))
+                    .toEqual({
+                        id: 1,
+                        pairs: 12,
+                        kickers: [11, 6]
+                    });
+            });
+
+            it(`for the same first kicker`, ()=> {
+                const combinations = [
+                    {
+                        id: 1,
+                        pairs: 12,
                         kickers: [14, 6]
                     },
                     {
@@ -74,17 +150,6 @@ describe('Result Service', () => {
                         pair: 12,
                         kickers: [13, 14]
                     });
-            });
-
-            xit(`for the same first kicker`, ()=> {
-                const kickersFirstTheSame = [
-                    [14, 6, 2],
-                    [11, 7, 3],
-                    [14, 6, 3],
-                    [13, 3, 2]
-                ];
-                expect(resultService.bestKicker(kickersFirstTheSame))
-                    .toEqual([2, 0, 3, 1]);
             });
 
         });

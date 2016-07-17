@@ -18,8 +18,25 @@ const currentIsBetter = (pairs) => {
 };
 
 export const resultService = {
-    checkResult: () => {
-        resultService.bestCombination();
+    checkResult: (array) => {
+        const bestCombination = resultService.bestCombination(array);
+        const bestCombinationResult = _.filter(array, (o) => {
+            return o.id === bestCombination.id;
+        });
+        if(bestCombinationResult.length === 1) {
+            return resultService.bestCombination(array);
+        } else {
+            const bestValue = resultService.bestValue(bestCombinationResult);
+            const bestValueResult = _.filter(array, (o) => {
+                return o.value === bestValue.value;
+            });
+            if(bestValueResult.length === 1){
+                return bestValue;
+            } else {
+                const bestKicker = resultService.bestKicker(bestValueResult);
+                return bestKicker;
+            }
+        }
     },
     bestCombination: (array) => {
         const highestCombinationId = _.maxBy(array, 'id').id;
