@@ -1,59 +1,68 @@
 import _ from 'lodash';
 
+const sortDesc = o => {
+    return -o
+};
+
+const currentIsBetter = (pairs) => {
+    for (let i = 0; i < pairs.length; i++) {
+        const pair = pairs[i];
+
+        if (pair[1] > pair[0]) {
+            return true;
+        } else if (pair[1] < pair[0]) {
+            return false;
+        }
+    }
+    return false;
+};
+
 export const resultService = {
     checkResult: () => {
         resultService.bestCombination();
     },
     bestCombination: (array) => {
+        const highestCombinationId = _.maxBy(array, 'id').id;
+        return _.filter(array, {id: highestCombinationId})[0];
+    },
+    bestValue: (array) => {
+        const combinationId = array[0].id;
 
-        return [2, 1, 0];
-    },
-    bestValue: (values) => {
-        const maxIterations = values[0].length;
-        values = resultService.preFormatting(values);
-        return resultService.recursiveCompareArrays(values, 0, maxIterations);
-    },
+        if (combinationId === 1 ||
+            combinationId === 3 ||
+            combinationId === 7 ||
+            combinationId === 5 ||
+            combinationId === 8 ||
+            combinationId === 4) {
+            const highestvalue = _.maxBy(array, 'value').value;
+            return _.filter(array, {value: highestvalue})[0];
+        }
 
-    bestKicker: (kickers) => {
-        const maxIterations = kickers[0].length;
-        kickers = resultService.preFormatting(kickers);
-        return resultService.recursiveCompareArrays(kickers, 0, maxIterations);
-    },
+        if (combinationId === 2) {
+            const highestHigh = _.maxBy(array, 'highPair').highPair;
+            if (_.filter(array, {highPair: highestHigh}).length > 1) {
+                const highestLow = _.maxBy(array, 'lowPair').lowPair;
+                return _.filter(array, {lowPair: highestLow})[0]
+            }
+            return _.filter(array, {highPair: highestHigh})[0];
+        }
 
-    recursiveCompareArrays: (array, i, maxIterations) => {
-        return _(array)
-            .groupBy(`arr[${i}]`)
-            .toPairs()
-            .sortBy((o) => {
-                return -o[0];
-            })
-            .map((subArr) => {
-                return subArr[1];
-            })
-            .flatMap((subArr) => {
-                if (subArr.length === 1) {
-                    return resultService.getIndexes(subArr);
-                }
+        if (combinationId === 6) {
+            const highestHigh = _.maxBy(array, 'threeOfKind').threeOfKind;
+            if (_.filter(array, {threeOfKind: highestHigh}).length > 1) {
+                const highestLow = _.maxBy(array, 'pair').pair;
+                return _.filter(array, {pair: highestLow})[0]
+            }
+            return _.filter(array, {threeOfKind: highestHigh})[0];
+        }
+    },
+    bestKicker: (array) => {
+        return _.reduce(array, (prev, current) => {
+            const bestKickers = _.sortBy(prev.kickers, sortDesc);
+            const currentKickers = _.sortBy(current.kickers, sortDesc);
+            const kickerPairs = _.zip(bestKickers, currentKickers);
 
-                if (i === maxIterations) {
-                    return [resultService.getIndexes(subArr)];
-                }
-                return resultService.recursiveCompareArrays(subArr, i + 1, maxIterations);
-            })
-            .value();
-    },
-    preFormatting: (array) => {
-        return _.map(array, (subArray, i) => {
-                subArray = _.sortBy(subArray, (o) => {
-                    return -o;
-                });
-                return {
-                    arr: subArray,
-                    index: i
-                }
-            });
-    },
-    getIndexes: (array) => {
-        return _.map(array, 'index');
+            return currentIsBetter(kickerPairs) ? current : prev;
+        });
     }
 };

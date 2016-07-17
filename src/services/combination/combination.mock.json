@@ -1,205 +1,375 @@
 {
   "onePair": [
-      {
+    {
+      "input": [
+        {
+          "value": 2,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 2,
+          "symbol": "clubs"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 1,
         "value": 2,
-        "symbol": "spades"
-      },
-      {
-        "value": 5,
-        "symbol": "hearts"
-      },
-      {
-        "value": 2,
-        "symbol": "clubs"
-      },
-      {
-        "value": 11,
-        "symbol": "spades"
-      },
-      {
+        "kicker": [
+          12,
+          11,
+          5
+        ]
+      }
+    },
+    {
+      "input": [
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 2,
+          "symbol": "clubs"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 1,
         "value": 12,
-        "symbol": "spades"
+        "kicker": [
+          11,
+          5,
+          2
+        ]
       }
-    ],
-  "twoPairs": [
-      {
-        "value": 2,
-        "symbol": "spades"
-      },
-      {
-        "value": 5,
-        "symbol": "clubs"
-      },
-      {
-        "value": 2,
-        "symbol": "diamonds"
-      },
-      {
-        "value": 11,
-        "symbol": "spades"
-      },
-      {
-        "value": 11,
-        "symbol": "hearts"
-      }
-    ],
-  "threeOfKind": [
-      {
-        "value": 2,
-        "symbol": "spades"
-      },
-      {
-        "value": 2,
-        "symbol": "spades"
-      },
-      {
-        "value": 2,
-        "symbol": "hearts"
-      },
-      {
-        "value": 11,
-        "symbol": "spades"
-      },
-      {
-        "value": 14,
-        "symbol": "spades"
-      }
-    ],
-  "fourOfKind": [
-      {
-        "label": "3",
-        "value": 3,
-        "symbol": "spades"
-      },
-      {
-        "label": "3",
-        "value": 3,
-        "symbol": "spades"
-      },
-      {
-        "label": "3",
-        "value": 3,
-        "symbol": "spades"
-      },
-      {
-        "label": "3",
-        "value": 3,
-        "symbol": "spades"
-      },
-      {
-        "label": "A",
-        "value": 14,
-        "symbol": "spades"
-      }
-    ],
-  "straight": [
-    {
-      "value": 9,
-      "symbol": "spades"
     },
     {
-      "value": 10,
-      "symbol": "diamonds"
-    },
-    {
-      "value": 11,
-      "symbol": "spades"
-    },
-    {
-      "value": 12,
-      "symbol": "hearts"
-    },
-    {
-      "value": 13,
-      "symbol": "spades"
+      "input": [
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 2,
+          "symbol": "clubs"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 9,
+          "symbol": "spades"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 1,
+        "value": 12,
+        "kicker": [
+          11,
+          9,
+          5
+        ]
+      }
     }
   ],
-  "smallStraight": [
+  "twoPairs": [
     {
-      "value": 14,
-      "symbol": "spades"
-    },
+      "input": [
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 9,
+          "symbol": "clubs"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 9,
+          "symbol": "spades"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 2,
+        "highPair": 12,
+        "lowPair": 9,
+        "kicker": [
+          11
+        ]
+      }
+    }
+  ],
+  "threeOfKind": [
     {
-      "value": 2,
-      "symbol": "diamonds"
-    },
+      "input": [
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 3,
+          "symbol": "clubs"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 9,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 3,
+        "value": 3,
+        "kicker": [
+          12,
+          11
+        ]
+      }
+    }
+  ],
+  "fourOfKind": [
     {
-      "value": 3,
-      "symbol": "spades"
-    },
+      "input": [
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 7,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "hearts"
+        },
+        {
+          "value": 2,
+          "symbol": "clubs"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 7,
+        "value": 3,
+        "kicker": [
+          7
+        ]
+      }
+    }
+  ],
+  "straight": [
     {
-      "value": 4,
-      "symbol": "hearts"
-    },
-    {
-      "value": 5,
-      "symbol": "spades"
+      "input": [
+        {
+          "value": 2,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "hearts"
+        },
+        {
+          "value": 4,
+          "symbol": "spades"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 6,
+          "symbol": "hearts"
+        },
+        {
+          "value": 5,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 4,
+        "value": 6
+      }
     }
   ],
   "color": [
     {
-      "value": 3,
-      "symbol": "spades"
-    },
-    {
-      "value": 10,
-      "symbol": "spades"
-    },
-    {
-      "value": 11,
-      "symbol": "spades"
-    },
-    {
-      "value": 12,
-      "symbol": "spades"
-    },
-    {
-      "value": 13,
-      "symbol": "spades"
+      "input": [
+        {
+          "value": 2,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "spades"
+        },
+        {
+          "value": 7,
+          "symbol": "spades"
+        },
+        {
+          "value": 11,
+          "symbol": "spades"
+        },
+        {
+          "value": 11,
+          "symbol": "hearts"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 5,
+        "value": 12,
+        "color": "spades"
+      }
     }
   ],
   "fullHouse": [
     {
-      "value": 2,
-      "symbol": "spades"
-    },
-    {
-      "value": 2,
-      "symbol": "spades"
-    },
-    {
-      "value": 2,
-      "symbol": "hearts"
-    },
-    {
-      "value": 11,
-      "symbol": "spades"
-    },
-    {
-      "value": 11,
-      "symbol": "spades"
+      "input": [
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 5,
+          "symbol": "hearts"
+        },
+        {
+          "value": 3,
+          "symbol": "clubs"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        },
+        {
+          "value": 9,
+          "symbol": "spades"
+        },
+        {
+          "value": 3,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 6,
+        "threeOfKind": 3,
+        "pair": 12
+      }
     }
   ],
   "poker": [
     {
-      "value": 9,
-      "symbol": "spades"
-    },
-    {
-      "value": 10,
-      "symbol": "spades"
-    },
-    {
-      "value": 11,
-      "symbol": "spades"
-    },
-    {
-      "value": 12,
-      "symbol": "spades"
-    },
-    {
-      "value": 13,
-      "symbol": "spades"
+      "input": [
+        {
+          "value": 9,
+          "symbol": "spades"
+        },
+        {
+          "value": 10,
+          "symbol": "spades"
+        },
+        {
+          "value": 7,
+          "symbol": "spades"
+        },
+        {
+          "value": 13,
+          "symbol": "spades"
+        },
+        {
+          "value": 11,
+          "symbol": "hearts"
+        },
+        {
+          "value": 12,
+          "symbol": "spades"
+        }
+      ],
+      "expected": {
+        "id": 8,
+        "value": 13,
+        "color": "spades"
+      }
     }
   ],
   "highCard": [

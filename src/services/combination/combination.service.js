@@ -1,176 +1,112 @@
 import _ from 'lodash';
-import fp from 'lodash/fp';
+
+const descLength = o => {
+    return -o.length;
+};
+const sortDesc = o => {
+    return -o
+};
 
 export const combinationService = {
     checkCombination: (array) => {
-
-        const combinations = [
-            {
-                strength: 0,
-                name: 'highCard'
-            },
-            {
-                strength: 1,
-                name: 'onePair'
-            },
-            {
-                strength: 2,
-                name: 'twoPairs'
-            },
-            {
-                strength: 3,
-                name: 'threeOfKind'
-            },
-            {
-                strength: 4,
-                name: 'straight'
-            },
-            {
-                strength: 5,
-                name: 'color'
-            },
-            {
-                strength: 6,
-                name: 'fullHouse'
-            },
-            {
-                strength: 7,
-                name: 'fourOfKind'
-            },
-            {
-                strength: 8,
-                name: 'poker'
-            }
-        ];
-
-        for(let i = 0; i<combinations.length; i++) {
-            let combination = combinations[i];
-
-            let result;
-            let values = combinationService.getSortValues(array);
-            console.log(values);
-
-            if (result = combinationService[combination.name](values)) {
-
-                // let kicker = combinationService.getKicker(values, result);
-                console.log(result);
-
-                return {
-                    value: result,
-                    strength: combination.strength,
-                    // kicker: kicker
-                };
-            }
-        }
-    },
-    getSortValues: (array) => {
-        return _.map(array, (el) => {
-            return el.value;
-        }).sort((a, b)=> {
-            return b - a;
-        });
+        
     },
     getCombination: (array, condition, kickers) => {
-        let values = combinationService.getSortValues(array);
-        let combination = _.reduce(_.groupBy(values), (result, val) => {
-            return condition(result, val);
-        }, []);
+        const values = _(array)
+            .map('value')
+            .sortBy(sortDesc)
+            .value();
+
+        const combination = _(values)
+            .groupBy()
+            .sortBy(descLength)
+            .filter({'length': condition})
+            .value()[0];
 
         return {
-            value: combination,
+            value: combination[0],
             kicker: _.difference(values, combination).slice(0, kickers)
         }
     },
-    highCard: (array) => {
-        let values = _.map(array, (el) => {
-            return el.value;
-        }).sort((a, b)=> {
-            return b - a;
-        });
-
-        return {
-            combinationId: 0,
-            value: 0,
-            kicker: values[0]
-        };
-    },
     onePair: (array) => {
-        const condition = (result, val) => {
-            if(val.length === 2){
-                result.push(val[0]);
-            }
-            return result;
-        };
-        return combinationService.getCombination(array, condition, 3);
+        return {
+            ...combinationService.getCombination(array, 2, 3),
+            id: 1
+        }
     },
     twoPairs: (array) => {
-        const condition = (result, val) => {
-            if(val.length === 2){
-                result.push(val[0]);
-            }
-            return result;
-        };
-        return combinationService.getCombination(array, condition, 1);
+        const highPair = combinationService.getCombination(array, 2, 1).value;
+        const arrayWithoutHighPair = _.filter(array, o => {
+            return o.value !== highPair
+        });
+        const l = combinationService.getCombination(arrayWithoutHighPair, 2, 1);
+        return {
+            highPair,
+            lowPair: l.value,
+            kicker: l.kicker,
+            id: 2
+        }
     },
     threeOfKind: (array) => {
-        const condition = (result, val) => {
-            if(val.length === 3){
-                result.push(val[0]);
-            }
-            return result;
-        };
-
-        return combinationService.getCombination(array, condition, 2);
-    },
-    fourOfKind: (array) => {
-        const condition = (result, val) => {
-            if(val.length === 4){
-                result.push(val[0]);
-            }
-            return result;
-        };
-
-        return combinationService.getCombination(array, condition, 1);
+        return {
+            ...combinationService.getCombination(array, 3, 2),
+            id: 3
+        }
     },
     straight: (array) => {
-        const getIncSortedValues = fp.compose(
-            fp.sortedUniq,
-            fp.sortBy((o) => {
-                return o;
-            }),
-            fp.map('value'),
-        );
-        let values = getIncSortedValues(array);
+        const result = _(array)
+            .map('value')
+            .sortBy()
+            .reduce((prev, current) => {
+                if (prev.val + 1 === current || !prev.counter) {
+                    prev.counter++;
+                    prev.max = current;
+                }
+                prev.val = current;
+                return prev;
+            }, {max: 0, val: 0, counter: 0});
 
-        let counter = 0;
-        _.reduce(values, (previous, current) => {
-
-            if (previous + 1 === current) {
-                counter++;
+        if (result.counter >= 5) {
+            return {
+                id: 4,
+                value: result.max
             }
-
-            if (current === 14 && values[0] === 2) {
-                counter++;
-            }
-
-            return current;
-        }, 0);
-        return counter >= 4;
+        }
     },
     color: (array) => {
-        let colors = _.map(array, (el) => {
-            return el.symbol;
-        });
-        let grouped = _.groupBy(colors);
+        const longestColor = _(array)
+            .map('symbol')
+            .groupBy()
+            .sortBy(descLength)
+            .value()[0];
 
-        return _.reduce(grouped, (sum, val) => {
-            return val.length >= 5 ? sum + 1 : sum
-        }, 0);
+        if (longestColor.length >= 5) {
+            const {value} = _.maxBy(array, 'value');
+            return {
+                id: 5,
+                color: longestColor[0],
+                value: value
+            }
+        }
     },
     fullHouse: (array) => {
-        return combinationService.pair(array) && combinationService.threeOfKind(array);
+        return {
+            id: 6,
+            threeOfKind: combinationService.threeOfKind(array).value,
+            pair: combinationService.onePair(array).value
+        }
+    },
+    fourOfKind: (array) => {
+        return {
+            ...combinationService.getCombination(array, 4, 1),
+            id: 7
+        }
     },
     poker: (array) => {
-        return combinationService.color(array) && combinationService.straight(array);
+        return {
+            id: 8,
+            color: combinationService.color(array).color,
+            value: combinationService.straight(array).value
+        }
     }
 };
