@@ -58,7 +58,7 @@ describe('Result Service', () => {
                 mocks.threeOfKind[0].expected,
                 {
                     ...mocks.threeOfKind[0].expected,
-                    kickers: [12, 6]
+                    kicker: [12, 11]
                 }
             ];
 
@@ -173,7 +173,7 @@ describe('Result Service', () => {
             it(`for two pairs`, ()=> {
                 const combinations = [
                     {
-                        "id": 2,
+                        "combinationId": 2,
                         "highPair": 12,
                         "lowPair": 2,
                         "kicker": [
@@ -181,7 +181,7 @@ describe('Result Service', () => {
                         ]
                     },
                     {
-                        "id": 2,
+                        "combinationId": 2,
                         "highPair": 11,
                         "lowPair": 10,
                         "kicker": [
@@ -197,7 +197,7 @@ describe('Result Service', () => {
             it(`for two pairs and equal high pair`, ()=> {
                 const combinations = [
                     {
-                        "id": 2,
+                        "combinationId": 2,
                         "highPair": 12,
                         "lowPair": 2,
                         "kicker": [
@@ -205,7 +205,7 @@ describe('Result Service', () => {
                         ]
                     },
                     {
-                        "id": 2,
+                        "combinationId": 2,
                         "highPair": 12,
                         "lowPair": 10,
                         "kicker": [
@@ -221,7 +221,7 @@ describe('Result Service', () => {
             it(`for three of a kind`, ()=> {
                 const combinations = [
                     {
-                        "id": 3,
+                        "combinationId": 3,
                         "value": 3,
                         "kicker": [
                             12,
@@ -229,7 +229,7 @@ describe('Result Service', () => {
                         ]
                     },
                     {
-                        "id": 3,
+                        "combinationId": 3,
                         "value": 7,
                         "kicker": [
                             12,
@@ -245,14 +245,14 @@ describe('Result Service', () => {
             it(`for four of a kind`, ()=> {
                 const combinations = [
                     {
-                        "id": 7,
+                        "combinationId": 7,
                         "value": 9,
                         "kicker": [
                             7
                         ]
                     },
                     {
-                        "id": 7,
+                        "combinationId": 7,
                         "value": 3,
                         "kicker": [
                             7
@@ -267,11 +267,11 @@ describe('Result Service', () => {
             it(`for straight`, ()=> {
                 const combinations = [
                     {
-                        "id": 4,
+                        "combinationId": 4,
                         "value": 6
                     },
                     {
-                        "id": 4,
+                        "combinationId": 4,
                         "value": 11
                     }
                 ];
@@ -283,12 +283,12 @@ describe('Result Service', () => {
             it(`for straight`, ()=> {
                 const combinations = [
                     {
-                        "id": 5,
+                        "combinationId": 5,
                         "value": 3,
                         "color": "spades"
                     },
                     {
-                        "id": 5,
+                        "combinationId": 5,
                         "value": 12,
                         "color": "spades"
                     }
@@ -301,12 +301,12 @@ describe('Result Service', () => {
             it(`for full house`, ()=> {
                 const combinations = [
                     {
-                        "id": 6,
+                        "combinationId": 6,
                         "threeOfKind": 8,
                         "pair": 12
                     },
                     {
-                        "id": 6,
+                        "combinationId": 6,
                         "threeOfKind": 3,
                         "pair": 12
                     }
@@ -319,12 +319,12 @@ describe('Result Service', () => {
             it(`for full house with equal three of a kind`, ()=> {
                 const combinations = [
                     {
-                        "id": 6,
+                        "combinationId": 6,
                         "threeOfKind": 3,
                         "pair": 6
                     },
                     {
-                        "id": 6,
+                        "combinationId": 6,
                         "threeOfKind": 3,
                         "pair": 11
                     }
@@ -337,12 +337,12 @@ describe('Result Service', () => {
             it(`for poker`, ()=> {
                 const combinations = [
                     {
-                        "id": 8,
+                        "combinationId": 8,
                         "value": 5,
                         "color": "spades"
                     },
                     {
-                        "id": 8,
+                        "combinationId": 8,
                         "value": 13,
                         "color": "spades"
                     }

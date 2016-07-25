@@ -21,7 +21,7 @@ export const resultService = {
     checkResult: (array) => {
         const bestCombination = resultService.bestCombination(array);
         const bestCombinationResult = _.filter(array, (o) => {
-            return o.id === bestCombination.id;
+            return o.combinationId === bestCombination.combinationId;
         });
         if(bestCombinationResult.length === 1) {
             return resultService.bestCombination(array);
@@ -39,11 +39,11 @@ export const resultService = {
         }
     },
     bestCombination: (array) => {
-        const highestCombinationId = _.maxBy(array, 'id').id;
-        return _.filter(array, {id: highestCombinationId})[0];
+        const highestCombinationId = _.maxBy(array, 'combinationId').combinationId;
+        return _.filter(array, {combinationId: highestCombinationId})[0];
     },
     bestValue: (array) => {
-        const combinationId = array[0].id;
+        const combinationId = array[0].combinationId;
 
         if (combinationId === 1 ||
             combinationId === 3 ||
