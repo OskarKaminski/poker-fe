@@ -31,7 +31,7 @@ export const combinationService = {
     onePair: (array) => {
         return {
             ...combinationService.getCombination(array, 2, 3),
-            id: 1
+            combinationId: 1
         }
     },
     twoPairs: (array) => {
@@ -44,13 +44,13 @@ export const combinationService = {
             highPair,
             lowPair: l.value,
             kicker: l.kicker,
-            id: 2
+            combinationId: 2
         }
     },
     threeOfKind: (array) => {
         return {
             ...combinationService.getCombination(array, 3, 2),
-            id: 3
+            combinationId: 3
         }
     },
     straight: (array) => {
@@ -68,7 +68,7 @@ export const combinationService = {
 
         if (result.counter >= 5) {
             return {
-                id: 4,
+                combinationId: 4,
                 value: result.max
             }
         }
@@ -83,7 +83,7 @@ export const combinationService = {
         if (longestColor.length >= 5) {
             const {value} = _.maxBy(array, 'value');
             return {
-                id: 5,
+                combinationId: 5,
                 color: longestColor[0],
                 value: value
             }
@@ -91,7 +91,7 @@ export const combinationService = {
     },
     fullHouse: (array) => {
         return {
-            id: 6,
+            combinationId: 6,
             threeOfKind: combinationService.threeOfKind(array).value,
             pair: combinationService.onePair(array).value
         }
@@ -99,12 +99,12 @@ export const combinationService = {
     fourOfKind: (array) => {
         return {
             ...combinationService.getCombination(array, 4, 1),
-            id: 7
+            combinationId: 7
         }
     },
     poker: (array) => {
         return {
-            id: 8,
+            combinationId: 8,
             color: combinationService.color(array).color,
             value: combinationService.straight(array).value
         }

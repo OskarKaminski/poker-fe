@@ -24,7 +24,7 @@
         }
       ],
       "expected": {
-        "id": 1,
+        "combinationId": 1,
         "value": 2,
         "kicker": [
           12,
@@ -57,7 +57,7 @@
         }
       ],
       "expected": {
-        "id": 1,
+        "combinationId": 1,
         "value": 12,
         "kicker": [
           11,
@@ -98,7 +98,7 @@
         }
       ],
       "expected": {
-        "id": 1,
+        "combinationId": 1,
         "value": 12,
         "kicker": [
           11,
@@ -141,7 +141,7 @@
         }
       ],
       "expected": {
-        "id": 2,
+        "combinationId": 2,
         "highPair": 12,
         "lowPair": 9,
         "kicker": [
@@ -183,11 +183,11 @@
         }
       ],
       "expected": {
-        "id": 3,
+        "combinationId": 3,
         "value": 3,
-        "kickers": [
+        "kicker": [
           12,
-          5
+          11
         ]
       }
     }
@@ -221,7 +221,7 @@
         }
       ],
       "expected": {
-        "id": 7,
+        "combinationId": 7,
         "value": 3,
         "kicker": [
           7
@@ -258,7 +258,7 @@
         }
       ],
       "expected": {
-        "id": 4,
+        "combinationId": 4,
         "value": 6
       }
     }
@@ -292,7 +292,7 @@
         }
       ],
       "expected": {
-        "id": 5,
+        "combinationId": 5,
         "value": 12,
         "color": "spades"
       }
@@ -331,7 +331,7 @@
         }
       ],
       "expected": {
-        "id": 6,
+        "combinationId": 6,
         "threeOfKind": 3,
         "pair": 12
       }
@@ -366,7 +366,7 @@
         }
       ],
       "expected": {
-        "id": 8,
+        "combinationId": 8,
         "value": 13,
         "color": "spades"
       }
