@@ -57,25 +57,74 @@ describe('Game service', () => {
 
     });
 
-    it(`has method gameResult`, ()=> {
-        expect(gameService.gameResult).toBeDefined();
+    it(`has property currentPhase and it's inital set to flop`, ()=> {
+        expect(gameService.currentPhase).toBeDefined();
+        expect(gameService.currentPhase).toEqual(0);
     });
 
-    describe('GameResult method', () => {
+    it(`has method nextPhase`, ()=> {
+        expect(gameService.nextPhase).toBeDefined();
+    });
 
-        describe(`returns "Oskar won" when`, ()=> {
+    describe('Method nextPhase', () => {
 
-            it(`Oskar has two pairs and his opponent one pair`, ()=> {
-                gameService.players = {
-                    Oskar: mocks.twoPairs,
-                    Opponent: mocks.onePair
-                };
+        let gameService;
 
-                expect(gameService.gameResult()).toBe('Oskar won');
-            });
-
+        beforeEach(()=> {
+            gameService = new GameService();
         });
-        
+
+        it(`after call increment the currentPhase property`, ()=> {
+            gameService.nextPhase();
+            expect(gameService.currentPhase).toEqual(1);
+        });
+
+        it(`pull out cards for current phase`, ()=> {
+            spyOn(gameService, 'pullOutFlop');
+            gameService.nextPhase();
+            expect(gameService.pullOutFlop).toHaveBeenCalled();
+
+            spyOn(gameService, 'pullOutTurn');
+            gameService.nextPhase();
+            expect(gameService.pullOutTurn).toHaveBeenCalled();
+
+            spyOn(gameService, 'pullOutRiver');
+            gameService.nextPhase();
+            expect(gameService.pullOutRiver).toHaveBeenCalled();
+
+            spyOn(gameService, 'result');
+            gameService.nextPhase();
+            expect(gameService.result).toHaveBeenCalled();
+        });
+
+    });
+
+    it(`has method result`, ()=> {
+        expect(gameService.result).toBeDefined();
+    });
+
+    describe('Result method', () => {
+
+
+        it(`returns 'Oskar won' when Oskar has better combination`, ()=> {
+            gameService.players = {
+                Oskar: mocks.twoPairs[0].input,
+                Opponent: mocks.onePair[0].input
+            };
+
+            expect(gameService.result()).toBe('Oskar won');
+        });
+
+        it(`returns 'Opponent won' when opponent has better combination`, ()=> {
+            gameService.players = {
+                Opponent: mocks.twoPairs[0].input,
+                Oskar: mocks.onePair[0].input
+            };
+
+            expect(gameService.result()).toBe('Opponent won');
+        });
+
+
         describe(`returns "Oskar lost" when`, ()=> {
 
             xit(`Oskar has one pair and his opponent two pairs`, ()=> {
