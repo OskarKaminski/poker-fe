@@ -22,7 +22,7 @@ module.exports = function (wallaby) {
 
         compilers: {
             '**/*.js': wallaby.compilers.babel({
-                presets: ['es2015', 'stage-2'],
+                presets: ['es2015', 'stage-2', 'react'],
                 plugins: ['transform-object-assign']
             })
         },
