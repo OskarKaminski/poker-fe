@@ -1,24 +1,32 @@
-import * as angular from 'angular';
-import {player} from './player/player';
 import {card} from './card/card';
-import {symbol} from './symbol/symbol';
-import {board} from './board/board';
-import {table} from './table/table';
+import React, {Component, PropTypes} from 'react'
+import {render} from 'react-dom'
+import {Card} from './card/card';
 
-let appCtrl = function () {
-};
+class ReactApp extends Component {
 
-let app = {
-    selector: 'app',
-    templateUrl: 'src/app.html',
-    controller: appCtrl
-};
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {
+                value: 8,
+                symbol: 'spades'
+            }
+        }
+    }
 
+    render() {
+        return (
+            <div className='app'>
+                <h1>Comments</h1>
+                <Card data={this.state.data}></Card>
+            </div>
+        )
+    }
 
-angular.module('app', []);
-angular.module('app').component('app', app);
-angular.module('app').component('player', player);
-angular.module('app').component('card', card);
-angular.module('app').component('symbol', symbol);
-angular.module('app').component('board', board);
-angular.module('app').component('table', table);
+}
+
+render(
+    <ReactApp/>,
+    document.getElementById('content')
+);

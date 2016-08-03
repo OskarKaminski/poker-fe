@@ -1,26 +1,35 @@
-let cardCtrl = function(){
-    this.labels = {
+import React, {Component, PropTypes} from 'react';
+import {Symbol} from '../symbol/symbol';
+
+export const Card = (props) => {
+
+    const labels = {
         11: 'J',
         12: 'Q',
         13: 'K',
         14: 'A'
     };
 
-    this.$onInit = () => {
-        this.label = this.getLabel();
-    };
+    const label = labels[props.data.value] || props.data.value;
 
-    this.getLabel = () => {
-        return this.labels[this.value] || this.value;
-    };
+    return (
+        <div className='card'>
+            <div className="card__left-top-corner">
+                {label}<Symbol symbol={props.data.symbol} />
+            </div>
+            <div className="card__right-top-corner">
+                {label}<Symbol symbol={props.data.symbol} />
+            </div>
+            <div className="card__left-down-corner">
+                {label}<Symbol symbol={props.data.symbol} />
+            </div>
+            <div className="card__right-down-corner">
+                {label}<Symbol symbol={props.data.symbol} />
+            </div>
+        </div>
+    )
 };
 
-export let card = {
-    selector: 'card',
-    templateUrl: 'src/card/card.html',
-    controller: cardCtrl,
-    bindings: {
-        value: '@',
-        symbol: '@'
-    }
+Card.propTypes = {
+    data: PropTypes.object.isRequired
 };
