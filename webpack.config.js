@@ -1,16 +1,18 @@
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: './dist',
+        path: './',
         filename: 'bundle.js'
+    },
+    devServer: {
+        inline: true,
+        port: 3333
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: 'style!css' },
-            { test: /\.json$/, loader: 'json' },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel',
                 query: {
                     presets: ['es2015', 'stage-2', 'react']
