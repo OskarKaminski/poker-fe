@@ -1,34 +1,22 @@
-import {GameService} from '../services/game/game.service';
-import {combinationService} from '../services/combination/combination.service';
+import React from 'react'
+import {Player} from '../player/player';
+import {Board} from '../board/board';
 
-const gameService = new GameService();
+export const Table = (props) => {
+    return (
+        <div>
+            <div className="table table__top-sit">
+                <Player cards={props.players[0].cards}
+                        board={props.board}></Player>
+            </div>
 
-let tableCtrl = function () {
-    this.player1 = {
-        name: 'Oskar'
-    };
-    this.player2 = {
-        name: 'Computer'
-    };
-    this.player1.cards = gameService.pullOutPlayerCards(this.player1.name);
-    this.player2.cards = gameService.pullOutPlayerCards(this.player2.name);
-    this.flop = gameService.pullOutFlop();
-    this.turn = gameService.pullOutTurn();
-    this.river = gameService.pullOutRiver();
-    this.player1.combination =
-        combinationService.checkCombination([...this.player1.cards,
-            ...this.flop,
-            ...this.turn,
-            ...this.river]);
-    this.player2.combination =
-        combinationService.checkCombination([...this.player2.cards,
-            ...this.flop,
-            ...this.turn,
-            ...this.river]);
-};
+            <Board data={props.board}></Board>
 
-export let table = {
-    selector: 'table',
-    templateUrl: 'src/table/table.html',
-    controller: tableCtrl
+            <div className="table table__bottom-sit">
+                <Player cards={props.players[1].cards}
+                        board={props.board}></Player>
+            </div>
+
+        </div>
+    )
 };

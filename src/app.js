@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react'
-import {Card} from './card/card';
+import {Table} from './table/table';
+import {GameService} from './services/game/game.service';
 
 export default class App extends Component {
 
@@ -10,14 +11,34 @@ export default class App extends Component {
                 value: 8,
                 symbol: 'spades'
             }
-        }
+        };
+
+        const gameService = new GameService();
+
+        this.player1 = {
+            name: 'Oskar'
+        };
+        this.player2 = {
+            name: 'Opponent'
+        };
+
+        this.players = [
+            {cards: gameService.pullOutPlayerCards(this.player1.name)},
+            {cards: gameService.pullOutPlayerCards(this.player2.name)}
+        ];
+
+        this.board = {
+            flop: gameService.pullOutFlop(),
+            turn: gameService.pullOutTurn(),
+            river: gameService.pullOutRiver()
+        };
     }
 
     render() {
         return (
             <div className='app'>
-                <h1>Comments</h1>
-                <Card data={this.state.data}></Card>
+                <Table players={this.players}
+                       board={this.board}></Table>
             </div>
         )
     }

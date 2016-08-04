@@ -1,14 +1,32 @@
-let boardCtrl = function(){
+import React from 'react'
+import {Card} from '../card/card';
 
-};
+export const Board = (props) => {
+    const flop = props.data.flop.map((card, key) => {
+        return (
+            <Card key={key} data={card}></Card>
+        )
+    });
 
-export let board = {
-    selector: 'board',
-    templateUrl: 'src/board/board.html',
-    controller: boardCtrl,
-    bindings: {
-        flop: '<',
-        turn: '<',
-        river: '<'
-    }
+    return (
+        <div className="board">
+            <div className="cards">
+                <div className="flop">
+                    <div className="card-holder">
+                        {flop}
+                    </div>
+                </div>
+                <div className="turn">
+                    <div className="card-holder">
+                        <Card data={props.data.turn}></Card>
+                    </div>
+                </div>
+                <div className="river">
+                    <div className="card-holder">
+                        <Card data={props.data.river}></Card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 };

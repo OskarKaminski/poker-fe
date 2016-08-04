@@ -1,0 +1,14 @@
+.table {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.table__top-sit {
+    top: 50px;
+}
+
+.table__bottom-sit {
+    bottom: 50px;
+}
+
