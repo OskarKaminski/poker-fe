@@ -8,9 +8,9 @@ const Table = ({players, board}) => {
 
     return (
         <div className="table">
-            {players.map((player) => {
+            {players.map((player, key) => {
                 return (
-                    <Player key={player.id}
+                    <Player key={key}
                             cards={player.cards}
                             combination={player.combination}
                             id={player.id}/>
