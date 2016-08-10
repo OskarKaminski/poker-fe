@@ -17,9 +17,7 @@ const Table = ({players, board}) => {
                 );
             })}
 
-            <Board flop={board.flop}
-                   turn={board.turn}
-                   river={board.river}/>
+            <Board {...board} />
         </div>
     );
 
