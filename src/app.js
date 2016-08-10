@@ -25,15 +25,17 @@ const App = () => {
     };
 
     player1.combination =
-        combinationService.checkCombination([...player1.cards,
+        combinationService.checkCombination([
+            ...player1.cards,
             ...board.flop,
-            ...board.turn,
-            ...board.river]);
+            board.turn,
+            board.river]);
     player2.combination =
-        combinationService.checkCombination([...player2.cards,
+        combinationService.checkCombination([
+            ...player2.cards,
             ...board.flop,
-            ...board.turn,
-            ...board.river]);
+            board.turn,
+            board.river]);
 
     const players = [player1, player2];
 
