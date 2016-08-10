@@ -9,7 +9,7 @@ const Player = ({cards, combination, id}) => {
         );
     });
 
-    const combinationContent = combination && (
+    const combinationContent = combination && combination.kicker && (
             combination.kicker.map(v => {
                 return labels[v] ? labels[v] : v;
             }).join(', ')
