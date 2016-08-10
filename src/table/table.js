@@ -1,34 +1,37 @@
-import {GameService} from '../services/game/game.service';
-import {combinationService} from '../services/combination/combination.service';
+import React, {PropTypes} from "react";
+import Player from "../player/player"
+import Board from "../board/board"
 
-const gameService = new GameService();
+const Table = ({player1, player2, flop, turn, river}) => {
 
-let tableCtrl = function () {
-    this.player1 = {
-        name: 'Oskar'
-    };
-    this.player2 = {
-        name: 'Computer'
-    };
-    this.player1.cards = gameService.pullOutPlayerCards(this.player1.name);
-    this.player2.cards = gameService.pullOutPlayerCards(this.player2.name);
-    this.flop = gameService.pullOutFlop();
-    this.turn = gameService.pullOutTurn();
-    this.river = gameService.pullOutRiver();
-    this.player1.combination =
-        combinationService.checkCombination([...this.player1.cards,
-            ...this.flop,
-            ...this.turn,
-            ...this.river]);
-    this.player2.combination =
-        combinationService.checkCombination([...this.player2.cards,
-            ...this.flop,
-            ...this.turn,
-            ...this.river]);
+    return (
+        <div className="table">
+            <div className="top-sit">
+                <Player cards={player2.cards}
+                        combination={player2.combination}
+                        className="player2"/>
+            </div>
+
+            <Board flop={flop}
+                   turn={turn}
+                   river={river}/>
+
+            <div className="bottom-sit">
+                <Player cards={player1.cards}
+                        combination={player1.combination}
+                        className="player1"/>
+            </div>
+        </div>
+    );
+
 };
 
-export let table = {
-    selector: 'table',
-    templateUrl: 'src/table/table.html',
-    controller: tableCtrl
+Table.propTypes = {
+    player1: PropTypes.object.isRequired,
+    player2: PropTypes.object.isRequired,
+    flop: PropTypes.array.isRequired,
+    turn: PropTypes.object.isRequired,
+    river: PropTypes.object.isRequired
 };
+
+export default Table;

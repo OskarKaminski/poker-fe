@@ -1,32 +1,31 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-export const Symbol = (props) => {
+const Symbol = ({symbol}) => {
 
-    let symbol;
-    switch (props.symbol) {
+    let symbolContent;
+    switch (symbol) {
         case 'spades':
-            symbol = (<span>&spades;</span>);
+            symbolContent = (<span>&spades;</span>);
             break;
         case 'clubs':
-            symbol = (<span>&clubs;</span>);
+            symbolContent = (<span>&clubs;</span>);
             break;
         case 'diamonds':
-            symbol = (<span>&diams;</span>);
+            symbolContent = (<span>&diams;</span>);
             break;
         case 'hearts':
-            symbol = (<span>&hearts;</span>);
+            symbolContent = (<span>&hearts;</span>);
             break;
     }
 
     return (
-        <span>{symbol}</span>
+        <span>{symbolContent}</span>
     )
+
 };
 
-export let symbol = {
-    selector: 'symbol',
-    templateUrl: 'src/symbol/symbol.html',
-    bindings: {
-        value: '@'
-    }
+Symbol.propTypes = {
+    symbol: PropTypes.string.isRequired
 };
+
+export default Symbol;

@@ -1,5 +1,9 @@
-player {
+.player {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.player .combination {
+    clear: both;
 }
