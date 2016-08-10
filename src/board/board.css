@@ -1,11 +1,3 @@
-/*.board {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-}*/
-
 .board {
     position: relative;
     width: 450px;
