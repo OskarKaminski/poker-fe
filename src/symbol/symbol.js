@@ -2,25 +2,22 @@ import React, {PropTypes} from 'react';
 
 const Symbol = ({symbol}) => {
 
-    let symbolContent;
     switch (symbol) {
         case 'spades':
-            symbolContent = (<span>&spades;</span>);
+            return (<span>&spades;</span>);
             break;
         case 'clubs':
-            symbolContent = (<span>&clubs;</span>);
+            return (<span>&clubs;</span>);
             break;
         case 'diamonds':
-            symbolContent = (<span>&diams;</span>);
+            return (<span>&diams;</span>);
             break;
         case 'hearts':
-            symbolContent = (<span>&hearts;</span>);
+            return (<span>&hearts;</span>);
             break;
     }
 
-    return (
-        <span>{symbolContent}</span>
-    )
+    throw new Error('Unknown symbol: ' + symbol);
 
 };
 
