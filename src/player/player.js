@@ -11,7 +11,7 @@ const Player = ({cards, combination, id}) => {
 
     const combinationContent = combination && combination.kicker && (
             combination.kicker.map(v => {
-                return labels[v] ? labels[v] : v;
+                return labels[v] || v;
             }).join(', ')
         );
 
