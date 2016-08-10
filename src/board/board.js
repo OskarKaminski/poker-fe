@@ -4,52 +4,32 @@ import Card from "../card/card"
 const Board = ({flop, turn, river}) => {
 
     // Flop
-    let flopContent = '';
-
-    if (flop) {
-
-        let flopCards = flop.map(card => {
-
-            return (
-                <Card key={card.value + " " + card.symbol} value={card.value} symbol={card.symbol}/>
-            );
-
-        });
-
-        flopContent = (
+    const flopContent = flop && (
             <div className="flop">
                 <div className="card-holder">
-                    {flopCards}
+                    {flop.map((card, key) => {
+                        return (
+                            <Card key={key} value={card.value} symbol={card.symbol}/>
+                        );
+                    })}
                 </div>
                 <div>Flop</div>
             </div>
         );
 
-    }
-
     // Turn
-    let turnContent = '';
-
-    if (turn) {
-
-        turnContent = (
+    const turnContent = turn && (
             <div className="turn">
                 <div className="card-holder">
-                    <Card key={turn.value + " " + turn.symbol} value={turn.value}
+                    <Card value={turn.value}
                           symbol={turn.symbol}/>
                 </div>
                 Turn
             </div>
         );
 
-    }
-
     // River
-    let riverContent = '';
-
-    if (river) {
-
-        riverContent = (
+    const riverContent = river && (
             <div className="river">
                 <div className="card-holder">
                     <Card key={river.value + " " + river.symbol} value={river.value}
@@ -58,8 +38,6 @@ const Board = ({flop, turn, river}) => {
                 River
             </div>
         );
-
-    }
 
     return (
         <div className="board">
@@ -74,9 +52,9 @@ const Board = ({flop, turn, river}) => {
 };
 
 Board.propTypes = {
-    flop: PropTypes.array.isRequired,
-    turn: PropTypes.object.isRequired,
-    river: PropTypes.object.isRequired
+    flop: PropTypes.array,
+    turn: PropTypes.object,
+    river: PropTypes.object
 };
 
 export default Board;

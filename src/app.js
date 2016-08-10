@@ -5,34 +5,42 @@ import {combinationService} from './services/combination/combination.service';
 
 const App = () => {
 
-    let gameService = new GameService();
+    const gameService = new GameService();
 
-    let player1 = {
+    const player1 = {
+        id: 1,
         name: 'Oskar',
     };
-    let player2 = {
+    const player2 = {
+        id: 2,
         name: 'Computer'
     };
     player1.cards = gameService.pullOutPlayerCards(player1.name);
     player2.cards = gameService.pullOutPlayerCards(player2.name);
-    let flop = gameService.pullOutFlop();
-    let turn = gameService.pullOutTurn();
-    let river = gameService.pullOutRiver();
+
+    const board = {
+        flop: gameService.pullOutFlop(),
+        turn: gameService.pullOutTurn(),
+        river: gameService.pullOutRiver()
+    };
+
     player1.combination =
         combinationService.checkCombination([...player1.cards,
-            ...flop,
-            ...turn,
-            ...river]);
+            ...board.flop,
+            ...board.turn,
+            ...board.river]);
     player2.combination =
         combinationService.checkCombination([...player2.cards,
-            ...flop,
-            ...turn,
-            ...river]);
+            ...board.flop,
+            ...board.turn,
+            ...board.river]);
+
+    const players = [player1, player2];
 
     return (
         <div className='app'>
             <h1>Comments</h1>
-            <Table player1={player1} player2={player2} flop={flop} turn={turn} river={river}/>
+            <Table players={players} board={board}/>
         </div>
     )
 

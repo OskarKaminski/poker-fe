@@ -1,27 +1,22 @@
 import React, {PropTypes} from "react";
 import Card, {labels} from "../card/card"
 
-const Player = ({cards, combination, className}) => {
+const Player = ({cards, combination, id}) => {
 
-    let cardsContent = cards.map(card => {
-        let key = card.value + " " + card.symbol;
+    const cardsContent = cards.map((card, key) => {
         return (
             <Card key={key} value={card.value} symbol={card.symbol}/>
         );
     });
 
-    let combinationContent = '';
-
-    if (combination) {
-
-        combinationContent = combination.kicker.map(v => {
-            return labels[v] ? labels[v] : v;
-        }).join(', ');
-
-    }
+    const combinationContent = combination && (
+            combination.kicker.map(v => {
+                return labels[v] ? labels[v] : v;
+            }).join(', ')
+        );
 
     return (
-        <div className={className + " player"}>
+        <div className={"player"} id={"player" + id}>
             {cardsContent}
             <div className="combination">
                 <p>Your combination: {combinationContent}</p>
@@ -34,7 +29,7 @@ const Player = ({cards, combination, className}) => {
 Player.propTypes = {
     cards: PropTypes.array.isRequired,
     combination: PropTypes.object,
-    className: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
 };
 
 export default Player;

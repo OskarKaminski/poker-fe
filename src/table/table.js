@@ -2,36 +2,32 @@ import React, {PropTypes} from "react";
 import Player from "../player/player"
 import Board from "../board/board"
 
-const Table = ({player1, player2, flop, turn, river}) => {
+const Table = ({players, board}) => {
+
+    // @TODO Decide how and where players are placed
 
     return (
         <div className="table">
-            <div className="top-sit">
-                <Player cards={player2.cards}
-                        combination={player2.combination}
-                        className="player2"/>
-            </div>
+            {players.map((player) => {
+                return (
+                    <Player key={player.id}
+                            cards={player.cards}
+                            combination={player.combination}
+                            id={player.id}/>
+                );
+            })}
 
-            <Board flop={flop}
-                   turn={turn}
-                   river={river}/>
-
-            <div className="bottom-sit">
-                <Player cards={player1.cards}
-                        combination={player1.combination}
-                        className="player1"/>
-            </div>
+            <Board flop={board.flop}
+                   turn={board.turn}
+                   river={board.river}/>
         </div>
     );
 
 };
 
 Table.propTypes = {
-    player1: PropTypes.object.isRequired,
-    player2: PropTypes.object.isRequired,
-    flop: PropTypes.array.isRequired,
-    turn: PropTypes.object.isRequired,
-    river: PropTypes.object.isRequired
+    players: PropTypes.array.isRequired,
+    board: PropTypes.object.isRequired
 };
 
 export default Table;

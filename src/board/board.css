@@ -1,10 +1,17 @@
-.board {
+/*.board {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
+}*/
+
+.board {
+    position: relative;
+    width: 450px;
+    margin: 70px auto 0;
 }
+
 .cards {
     position: relative;
     display: flex;

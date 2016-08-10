@@ -1,7 +1,5 @@
 .player {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
 }
 
 .player .combination {
