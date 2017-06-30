@@ -1,6 +1,7 @@
 import React from 'react';
-import {Card} from '../card/card';
-import {combinationService} from '../services/combination/combination.service';
+import {Card} from 'Component/card/card';
+import {combinationService} from 'DL/combination/combination.service';
+import './player.css';
 
 export const Player = (props) => {
     const cards = props.cards.map((card, key) => {

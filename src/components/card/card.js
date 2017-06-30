@@ -1,5 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {Symbol} from '../symbol/symbol';
+import React, {PropTypes} from 'react';
+import {Symbol} from 'Component/symbol/symbol';
+import './card.css';
 
 export const Card = (props) => {
 

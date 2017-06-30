@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card} from '../card/card';
+import {Card} from 'Component/card/card';
+import './board.css';
 
 export const Board = (props) => {
     const flop = props.data.flop.map((card, key) => {

@@ -1,6 +1,7 @@
 import React from 'react'
-import {Player} from '../player/player';
-import {Board} from '../board/board';
+import {Player} from 'Component/player/player';
+import {Board} from 'Component/board/board';
+import './table.css';
 
 export const Table = (props) => {
     return (

@@ -1,8 +1,17 @@
 import React, {Component, PropTypes} from 'react'
-import {render} from 'react-dom'
+import ReactDOM from 'react-dom'
 import App from './app';
 
-render(
-    <App/>,
-    document.getElementById('app')
-);
+const render = () => {
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('app')
+    )
+}
+
+render();
+if (module.hot) {
+    module.hot.accept('./app', function() {
+        render();
+    })
+}

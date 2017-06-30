@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
-import {Table} from './table/table';
-import {GameService} from './services/game/game.service';
+import {Table} from 'Component/table/table';
+import {GameService} from 'DL/game/game.service';
+import './styles.css';
 
 export default class App extends Component {
 
