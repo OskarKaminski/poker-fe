@@ -42,9 +42,9 @@ export const combinationService = {
         if (!combination) {
             return false;
         }
-        const highPair = combinationService.createCombinationObject(array, combination, 1).value;
+        const lowPair = combinationService.createCombinationObject(array, combination, 1).value;
         const arrayWithoutHighPair = _.filter(array, o => {
-            return o.value !== highPair
+            return o.value !== lowPair
         });
         const combination2 = combinationService.getCombination(arrayWithoutHighPair, 2);
         if (!combination2) {
@@ -52,8 +52,8 @@ export const combinationService = {
         }
         const l = combinationService.createCombinationObject(arrayWithoutHighPair, combination2, 1);
         return {
-            highPair,
-            lowPair: l.value,
+            highPair: l.value,
+            lowPair: lowPair,
             kicker: l.kicker,
             combinationId: 2
         }
