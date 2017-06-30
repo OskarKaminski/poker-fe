@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
-import App from './app';
+import App from 'Pages/app';
 
 const render = () => {
     ReactDOM.render(
@@ -11,7 +11,7 @@ const render = () => {
 
 render();
 if (module.hot) {
-    module.hot.accept('./app', function() {
+    module.hot.accept('Pages/app', function() {
         render();
     })
 }

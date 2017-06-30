@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {Table} from 'Component/table/table';
 import {GameService} from 'DL/game/game.service';
-import './styles.css';
+import './app.scss';
 
 export default class App extends Component {
 

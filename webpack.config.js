@@ -14,6 +14,7 @@ const config = {
         extensions: ['.js'],
         alias: {
             Component: path.resolve(__dirname, 'src/components'),
+            Pages: path.resolve(__dirname, 'src/pages'),
             DL: path.resolve(__dirname, 'src/domain-logic'),
             Helper: path.resolve(__dirname, 'src/helpers')
         },
