@@ -3,4 +3,5 @@ export const tablesReducer = (state = [], action) => {
         case 'TABLES__UPDATE':
             return action.tables
     }
+    return state;
 }

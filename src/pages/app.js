@@ -1,7 +1,8 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {Table} from 'Component/table/table';
 import {GameService} from 'DL/game/game.service';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 import {Tables} from 'Pages/tables/tables';
 import './app.scss';
 

@@ -19,7 +19,9 @@ const config = {
             Organism: path.resolve(__dirname, 'src/components/Organisms'),
             Pages: path.resolve(__dirname, 'src/pages'),
             DL: path.resolve(__dirname, 'src/domain-logic'),
-            Helper: path.resolve(__dirname, 'src/helpers')
+            Helper: path.resolve(__dirname, 'src/helpers'),
+            Adapter: path.resolve(__dirname, 'src/adapters'),
+            State: path.resolve(__dirname, 'src/state')
         },
     },
     module: {

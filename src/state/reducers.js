@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-// import {routerReducer} from 'react-router-redux'
-// import {customer, car, discountFactors} from './Code/reducers';
+import {firebaseStateReducer} from 'react-redux-firebase'
+import {tablesReducer} from './tables/tables-reducer';
 
-export const reducers = combineReducers({
-    router: routerReducer,
-    tables,
+export const rootReducer = combineReducers({
+    firebase: firebaseStateReducer,
+    tables: tablesReducer
 });
