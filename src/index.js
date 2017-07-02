@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import {store} from 'State/store';
+import {BrowserRouter, Route, Link} from 'react-router-dom'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import ReactDOM from 'react-dom';
-import App from 'Pages/app';
+import App from 'Page/app';
 
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
-            <App/>
+            <BrowserRouter history={history}>
+                <App/>
+            </BrowserRouter>
         </Provider>,
         document.getElementById('app')
     )
@@ -16,7 +19,7 @@ const render = () => {
 
 render();
 if (module.hot) {
-    module.hot.accept('Pages/app', function () {
+    module.hot.accept('Page/app', function () {
         render();
     })
 }
