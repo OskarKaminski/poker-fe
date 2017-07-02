@@ -1,0 +1,19 @@
+.table {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url(https://www.cardschat.com/resources/oddsCalc/img/field.png) no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+
+.table__top-sit {
+    top: 50px;
+}
+
+.table__bottom-sit {
+    bottom: 50px;
+}
+

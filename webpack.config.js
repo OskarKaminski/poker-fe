@@ -14,6 +14,9 @@ const config = {
         extensions: ['.js'],
         alias: {
             Component: path.resolve(__dirname, 'src/components'),
+            Atom: path.resolve(__dirname, 'src/components/Atoms'),
+            Molecule: path.resolve(__dirname, 'src/components/Molecules'),
+            Organism: path.resolve(__dirname, 'src/components/Organisms'),
             Pages: path.resolve(__dirname, 'src/pages'),
             DL: path.resolve(__dirname, 'src/domain-logic'),
             Helper: path.resolve(__dirname, 'src/helpers')

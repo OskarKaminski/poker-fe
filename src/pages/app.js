@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react'
 import {Table} from 'Component/table/table';
 import {GameService} from 'DL/game/game.service';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import {Tables} from 'Pages/tables/tables';
 import './app.scss';
 
 export default class App extends Component {
@@ -38,8 +40,18 @@ export default class App extends Component {
     render() {
         return (
             <div className='app'>
-                <Table players={this.players}
-                       board={this.board}></Table>
+                <BrowserRouter>
+                    <div>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/table">Table</Link></li>
+                            <li><Link to="/tables">Tables</Link></li>
+                        </ul>
+
+                        <Route path="/table" component={Table}/>
+                        <Route path="/tables" component={Tables}/>
+                    </div>
+                </BrowserRouter>
             </div>
         )
     }
