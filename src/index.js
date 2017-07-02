@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from 'State/store';
-import {BrowserRouter, Route, Link} from 'react-router-dom'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import {ConnectedRouter} from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import ReactDOM from 'react-dom';
 import App from 'Page/app';
+
+const history = createHistory()
 
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
-            <BrowserRouter history={history}>
+            <ConnectedRouter history={history}>
                 <App/>
-            </BrowserRouter>
+            </ConnectedRouter>
         </Provider>,
         document.getElementById('app')
     )

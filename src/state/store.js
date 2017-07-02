@@ -2,12 +2,21 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import { reactReduxFirebase } from 'react-redux-firebase'
 import {rootReducer} from './reducers';
 import {config} from 'Adapter/firebase.config';
+import createHistory from 'history/createBrowserHistory'
+import {routerMiddleware} from 'react-router-redux'
 
-let devtools = window['devToolsExtension'] ?
+const devtools = window['devToolsExtension'] ?
     window['devToolsExtension']() : f => f;
+const history = createHistory()
+const interceptorMiddleware = routerMiddleware(history)
 
-const createStoreWithFirebase = compose(
-    reactReduxFirebase(config, {enableLogging: false}),
-)(createStore)
-
-export const store = createStoreWithFirebase(rootReducer, devtools)
+const initState = {};
+export const store = createStore(
+    rootReducer,
+    initState,
+    compose(
+        devtools,
+        reactReduxFirebase(config),
+        applyMiddleware(interceptorMiddleware)
+    )
+);
