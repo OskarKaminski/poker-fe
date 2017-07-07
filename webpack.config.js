@@ -21,7 +21,8 @@ const config = {
             DL: path.resolve(__dirname, 'src/domain-logic'),
             Helper: path.resolve(__dirname, 'src/helpers'),
             Adapter: path.resolve(__dirname, 'src/adapters'),
-            State: path.resolve(__dirname, 'src/state')
+            State: path.resolve(__dirname, 'src/state'),
+            History: path.resolve(__dirname, 'src/state/history')
         },
     },
     module: {

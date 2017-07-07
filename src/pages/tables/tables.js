@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {redirect} from 'History';
 import map from 'lodash/map';
 import {firebaseConnect, dataToJS} from 'react-redux-firebase'
 import {TablesListItem} from 'Molecule/TablesListItem/TablesListItem'
@@ -25,6 +25,7 @@ export class Tables extends React.Component {
     }
     onJoinTable = (id) => {
         console.log(id);
+        redirect(`/table/${id}`);
     }
     render() {
         return (

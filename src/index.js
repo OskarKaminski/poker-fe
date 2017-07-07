@@ -2,11 +2,9 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {store} from 'State/store';
 import {ConnectedRouter} from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
+import {history} from 'History';
 import ReactDOM from 'react-dom';
 import App from 'Page/app';
-
-const history = createHistory()
 
 const render = () => {
     ReactDOM.render(
