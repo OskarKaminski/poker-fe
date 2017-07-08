@@ -6,23 +6,38 @@ import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import './table.scss';
 
-@firebaseConnect(['tables'])
+const getTableById = id => ({
+    path: 'tables',
+    queryParams: [
+        'orderByChild=id',
+        'limitToFirst=1',
+        'equalTo='+id
+    ]
+})
+
+@firebaseConnect((props, firebase) => ([
+    getTableById(props.match.params.id)
+]))
 @connect(({firebase}) => ({
-    tables: dataToJS(firebase, 'tables')
+    table: dataToJS(firebase, 'tables')
 }))
 export class Table extends React.Component{
     constructor(props){
         super(props);
-        console.log(this.props.match.params);
     }
-    componentDidMount(){
-        const tableId = this.props.match.params.id;
-        const table = _.find(this.props.tables, {$key: tableId});
-        console.log(table);
+    tableData = () => {
+        return _.toArray(this.props.table)[0];
     }
     render(){
+        if(!this.props.table){
+            return null;
+        }
+        const table = this.tableData();
         return (
             <div className="table">
+                <div className="table__info">
+                    <p>{table.name} {table.stake}</p>
+                </div>
                 <div className="table__top-sit">
 
                 </div>
