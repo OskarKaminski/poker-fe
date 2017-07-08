@@ -1,9 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import classNames from 'classnames';
 import _ from 'lodash';
 import {firebaseConnect, dataToJS} from 'react-redux-firebase'
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
+import {Seat} from 'Molecule/Seat/Seat';
 import './table.scss';
 
 const getTableById = id => ({
@@ -34,18 +36,21 @@ export class Table extends React.Component{
         }
         const table = this.tableData();
         return (
-            <div className="table">
+            <div className={classNames('table', `table--seats-${table.seats}`)}>
                 <div className="table__info">
                     <p>{table.name} {table.stake}</p>
                 </div>
-                <div className="table__top-sit">
-
-                </div>
+                {
+                    _.times(table.seats, (key)=>(
+                        <div className={classNames('table__seat', `table__seat--${key+1}`)}
+                             key={key}>
+                            <Seat />
+                        </div>
+                    ))
+                }
 
                 {/*<Board data={props.board}></Board>*/}
 
-                <div className="table__bottom-sit">
-                </div>
 
             </div>
         )
