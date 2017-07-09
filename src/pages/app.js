@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Route, Link, Switch} from 'react-router-dom'
 import {Table} from 'Page/table/table';
 import {GameService} from 'DL/game/game.service';
-import {Tables} from 'Page/tables/tables';
+import {GameTables} from 'Page/game-tables/game-tables';
 import {Login} from 'Page/login/login';
 // import 'tether';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -45,7 +45,7 @@ export default class App extends Component {
             <div className='app'>
                 <Switch>
                     <Route path="/table/:id" component={Table}/>
-                    <Route path="/tables" component={Tables}/>
+                    <Route path="/tables" component={GameTables}/>
                     <Route path="/login" component={Login}/>
                 </Switch>
             </div>

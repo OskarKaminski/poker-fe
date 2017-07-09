@@ -5,13 +5,13 @@ import {firebaseConnect, dataToJS} from 'react-redux-firebase'
 import {TablesListItem} from 'Molecule/TablesListItem/TablesListItem'
 import {Button} from 'Atom/Button/Button'
 import {addTable} from 'Adapter/tables';
-import './tables.scss'
+import './game-tables.scss'
 
 @firebaseConnect(['tables'])
 @connect(({firebase}) => ({
     tables: dataToJS(firebase, 'tables')
 }))
-export class Tables extends React.Component {
+export class GameTables extends React.Component {
     addTable = () => {
         addTable({
             id: 1,
@@ -26,7 +26,7 @@ export class Tables extends React.Component {
     }
     render() {
         return (
-            <div className="tables">
+            <div className="game-tables">
                 <Button label="Add new table"
                         onClick={this.addTable}/>
                 {
