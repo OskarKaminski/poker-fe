@@ -2,10 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import classNames from 'classnames';
 import _ from 'lodash';
-import {firebaseConnect, dataToJS} from 'react-redux-firebase'
+import {firebaseConnect, dataToJS, pathToJS} from 'react-redux-firebase'
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
+import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
 import './game-table.scss';
 
 const getTableById = id => ({
@@ -21,11 +22,15 @@ const getTableById = id => ({
     getTableById(props.match.params.id)
 ]))
 @connect(({firebase}) => ({
-    table: dataToJS(firebase, 'tables')
+    table: dataToJS(firebase, 'tables'),
+    auth: pathToJS(firebase, 'auth')
 }))
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showJoinOptions: false
+        }
     }
 
     tableData = () => {
@@ -42,16 +47,21 @@ export class GameTable extends React.Component {
         return _.keys(this.props.table)[0];
     }
     onSit = (number) => {
+        this.setState({
+            showJoinOptions: number
+        });
+    }
+    onJoinOptionsEnter = (money) => {
         const seat = {
-            number,
+            number: this.state.showJoinOptions,
             player: {
                 login: 'Oskar',
-                balance: 2000
+                balance: money
             }
         }
         this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
+        this.setState({showJoinOptions: false});
     }
-
     render() {
         if (!this.props.table) {
             return null;
@@ -60,9 +70,13 @@ export class GameTable extends React.Component {
         const seats = this.seatsData();
         return (
             <div className={classNames('game-table', `game-table--seats-${table.numOfSeats}`)}>
-                <div className="game-table__info">
-                    <p>{table.name} {table.stake}</p>
-                </div>
+                {/*<div className="game-table__info">*/}
+                    {/*<p>{table.name} {table.stake}</p>*/}
+                {/*</div>*/}
+                {
+                    this.state.showJoinOptions &&
+                    <JoinOptions onJoin={this.onJoinOptionsEnter}/>
+                }
                 {
                     _.map(seats, (seat) => (
                         <div className={classNames('game-table__seat', `game-table__seat--${seat.number}`)}

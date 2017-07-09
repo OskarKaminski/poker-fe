@@ -9,6 +9,10 @@ const devtools = window['devToolsExtension'] ?
     window['devToolsExtension']() : f => f;
 const history = createHistory()
 const interceptorMiddleware = routerMiddleware(history)
+const authConfig = {
+    userProfile: 'users', // firebase root where user profiles are stored
+    enableLogging: false, // enable/disable Firebase's database logging
+}
 
 const initState = {};
 export const store = createStore(
@@ -16,7 +20,7 @@ export const store = createStore(
     initState,
     compose(
         devtools,
-        reactReduxFirebase(config),
+        reactReduxFirebase(config, authConfig),
         applyMiddleware(interceptorMiddleware)
     )
 );
