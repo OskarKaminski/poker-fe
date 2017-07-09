@@ -3,6 +3,9 @@ import {Route, Link, Switch} from 'react-router-dom'
 import {Table} from 'Page/table/table';
 import {GameService} from 'DL/game/game.service';
 import {Tables} from 'Page/tables/tables';
+import {Login} from 'Page/login/login';
+// import 'tether';
+import 'bootstrap/dist/css/bootstrap.css';
 import './app.scss';
 
 export default class App extends Component {
@@ -40,15 +43,10 @@ export default class App extends Component {
     render() {
         return (
             <div className='app'>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/table/:id">Table</Link></li>
-                    <li><Link to="/tables">Tables</Link></li>
-                </ul>
-
                 <Switch>
                     <Route path="/table/:id" component={Table}/>
                     <Route path="/tables" component={Tables}/>
+                    <Route path="/login" component={Login}/>
                 </Switch>
             </div>
         )

@@ -1,0 +1,59 @@
+#wrapper {
+  //width: 100%;
+}
+
+.login-register {
+  @media (max-width: 375px) {
+    display: none;
+  }
+
+  background-color: #19171c;
+  height: 100%;
+  width: 80%;
+  position: absolute;
+
+  &__image{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.login-box {
+  background: #ffffff;
+  margin: 0 auto;
+
+  @media (min-width: 376px) {
+    width: 30%;
+    max-width: 350px;
+  }
+}
+
+.login-sidebar {
+  position: absolute;
+  right: 0px;
+  margin-top: 0px;
+  height: 100%;
+}
+
+.white-box {
+  background: #ffffff;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+.logo-img {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.btn-facebook {
+  color: #ffffff !important;
+  background-color: #3b5998 !important;
+}
+
+.btn-googleplus {
+  color: #ffffff !important;
+  background-color: #dd4b39 !important;
+}
