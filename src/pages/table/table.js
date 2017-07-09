@@ -13,7 +13,7 @@ const getTableById = id => ({
     queryParams: [
         'orderByChild=id',
         'limitToFirst=1',
-        'equalTo='+id
+        'equalTo=' + id
     ]
 })
 
@@ -23,28 +23,53 @@ const getTableById = id => ({
 @connect(({firebase}) => ({
     table: dataToJS(firebase, 'tables')
 }))
-export class Table extends React.Component{
-    constructor(props){
+export class Table extends React.Component {
+    constructor(props) {
         super(props);
     }
+
     tableData = () => {
         return _.toArray(this.props.table)[0];
     }
-    render(){
-        if(!this.props.table){
+    seatsData = () => {
+        const numOfSeats = this.tableData().numOfSeats;
+        return _.map(new Array(numOfSeats), (el, i) => {
+            const seatOccupied = _.find(this.tableData().seats, {number: i+1});
+            return seatOccupied || {number: i+1};
+        })
+    }
+    tableKey = () => {
+        return _.keys(this.props.table)[0];
+    }
+    onSit = (number) => {
+        const seat = {
+            number,
+            player: {
+                login: 'Oskar',
+                balance: 2000
+            }
+        }
+        this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
+    }
+
+    render() {
+        if (!this.props.table) {
             return null;
         }
         const table = this.tableData();
+        const seats = this.seatsData();
         return (
-            <div className={classNames('table', `table--seats-${table.seats}`)}>
+            <div className={classNames('table', `table--seats-${table.numOfSeats}`)}>
                 <div className="table__info">
                     <p>{table.name} {table.stake}</p>
                 </div>
                 {
-                    _.times(table.seats, (key)=>(
-                        <div className={classNames('table__seat', `table__seat--${key+1}`)}
-                             key={key}>
-                            <Seat />
+                    _.map(seats, (seat) => (
+                        <div className={classNames('table__seat', `table__seat--${seat.number}`)}
+                             key={seat.number}>
+                            <Seat number={seat.number}
+                                  player={seat.player}
+                                  onSit={this.onSit}/>
                         </div>
                     ))
                 }
@@ -55,4 +80,5 @@ export class Table extends React.Component{
             </div>
         )
     }
-};
+}
+;

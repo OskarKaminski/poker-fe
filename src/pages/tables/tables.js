@@ -17,7 +17,7 @@ export class Tables extends React.Component {
             id: 1,
             name: 'table #1',
             stake: '0.10/0.20',
-            seats: 4,
+            numOfSeats: 4,
             players: []
         })
     }
