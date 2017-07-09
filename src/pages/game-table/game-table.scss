@@ -1,0 +1,38 @@
+.game-table {
+    width: 80%;
+    height: 41%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url(https://www.cardschat.com/resources/oddsCalc/img/field.png) no-repeat;
+    background-size: contain;
+
+    &__seat{
+        position: absolute;
+    }
+    &--seats-4{
+        .game-table__seat--{
+            &1{
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            &2{
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+            }
+            &3{
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            &4{
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+

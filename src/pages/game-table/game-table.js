@@ -6,7 +6,7 @@ import {firebaseConnect, dataToJS} from 'react-redux-firebase'
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
-import './table.scss';
+import './game-table.scss';
 
 const getTableById = id => ({
     path: 'tables',
@@ -23,7 +23,7 @@ const getTableById = id => ({
 @connect(({firebase}) => ({
     table: dataToJS(firebase, 'tables')
 }))
-export class Table extends React.Component {
+export class GameTable extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -59,13 +59,13 @@ export class Table extends React.Component {
         const table = this.tableData();
         const seats = this.seatsData();
         return (
-            <div className={classNames('table', `table--seats-${table.numOfSeats}`)}>
-                <div className="table__info">
+            <div className={classNames('game-table', `game-table--seats-${table.numOfSeats}`)}>
+                <div className="game-table__info">
                     <p>{table.name} {table.stake}</p>
                 </div>
                 {
                     _.map(seats, (seat) => (
-                        <div className={classNames('table__seat', `table__seat--${seat.number}`)}
+                        <div className={classNames('game-table__seat', `game-table__seat--${seat.number}`)}
                              key={seat.number}>
                             <Seat number={seat.number}
                                   player={seat.player}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Route, Link, Switch} from 'react-router-dom'
-import {Table} from 'Page/table/table';
+import {GameTable} from 'Page/game-table/game-table';
 import {GameService} from 'DL/game/game.service';
 import {GameTables} from 'Page/game-tables/game-tables';
 import {Login} from 'Page/login/login';
@@ -44,7 +44,7 @@ export default class App extends Component {
         return (
             <div className='app'>
                 <Switch>
-                    <Route path="/table/:id" component={Table}/>
+                    <Route path="/table/:id" component={GameTable}/>
                     <Route path="/tables" component={GameTables}/>
                     <Route path="/login" component={Login}/>
                 </Switch>
