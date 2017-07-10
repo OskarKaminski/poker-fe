@@ -6,9 +6,9 @@ import './login.scss';
 
 @firebaseConnect() // add this.props.firebase
 @connect( // map redux state to props
-    ({ firebase }) => ({
+    ({ firebase, auth }) => ({
         authError: pathToJS(firebase, 'authError'),
-        auth: pathToJS(firebase, 'auth')
+        auth
     })
 )
 export class Login extends React.Component {

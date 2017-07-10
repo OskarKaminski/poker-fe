@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import classNames from 'classnames';
 import _ from 'lodash';
 import {firebaseConnect, dataToJS, pathToJS} from 'react-redux-firebase'
+import {currentUserId} from 'Adapter/user';
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
@@ -22,8 +23,7 @@ const getTableById = id => ({
     getTableById(props.match.params.id)
 ]))
 @connect(({firebase}) => ({
-    table: dataToJS(firebase, 'tables'),
-    auth: pathToJS(firebase, 'auth')
+    table: dataToJS(firebase, 'tables')
 }))
 export class GameTable extends React.Component {
     constructor(props) {
@@ -66,6 +66,7 @@ export class GameTable extends React.Component {
         if (!this.props.table) {
             return null;
         }
+        console.log({'this.props.auth': this.props.firebase.auth().currentUser});
         const table = this.tableData();
         const seats = this.seatsData();
         return (
