@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import classNames from 'classnames';
 import _ from 'lodash';
 import {firebaseConnect, dataToJS, pathToJS} from 'react-redux-firebase'
-import {currentUserId} from 'Adapter/user';
+import {getCurrentUser, currentUserId} from 'Adapter/user';
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
@@ -24,7 +24,7 @@ const getTableById = id => ({
 ]))
 @connect(({firebase}) => ({
     table: dataToJS(firebase, 'tables')
-}))
+}), {getCurrentUser})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -52,21 +52,23 @@ export class GameTable extends React.Component {
         });
     }
     onJoinOptionsEnter = (money) => {
-        const seat = {
-            number: this.state.showJoinOptions,
-            player: {
-                login: 'Oskar',
-                balance: money
+        getCurrentUser().then(user => {
+            const seat = {
+                number: this.state.showJoinOptions,
+                player: {
+                    login: user.login,
+                    balance: money
+                }
             }
-        }
-        this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
-        this.setState({showJoinOptions: false});
+            this.props.firebase.update(`/users/${currentUserId()}`, {balance: user.balance - money});
+            this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
+            this.setState({showJoinOptions: false});
+        })
     }
     render() {
         if (!this.props.table) {
             return null;
         }
-        console.log({'this.props.auth': this.props.firebase.auth().currentUser});
         const table = this.tableData();
         const seats = this.seatsData();
         return (

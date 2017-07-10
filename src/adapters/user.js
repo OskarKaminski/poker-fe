@@ -7,3 +7,6 @@ export const getUser = (uid) => {
 export const currentUserId = () => {
     return auth.currentUser.uid;
 }
+export const getCurrentUser = () => {
+    return getUser(currentUserId());
+}
