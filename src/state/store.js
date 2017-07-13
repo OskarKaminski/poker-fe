@@ -1,26 +1,27 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import { reactReduxFirebase } from 'react-redux-firebase'
 import {rootReducer} from './reducers';
 import {config} from 'Adapter/firebase.config';
 import createHistory from 'history/createBrowserHistory'
 import {routerMiddleware} from 'react-router-redux'
+import createSagaMiddleware from 'redux-saga'
+import {authSaga} from './auth/auth.saga';
+import {userSaga} from './user/user.saga';
+import {tablesSaga} from './tables/tables.saga';
 
 const devtools = window['devToolsExtension'] ?
     window['devToolsExtension']() : f => f;
 const history = createHistory()
 const interceptorMiddleware = routerMiddleware(history)
-const authConfig = {
-    userProfile: 'users', // firebase root where user profiles are stored
-    enableLogging: false, // enable/disable Firebase's database logging
-}
+const sagaMiddleware = createSagaMiddleware();
 
-const initState = {};
 export const store = createStore(
     rootReducer,
-    initState,
     compose(
+        applyMiddleware(interceptorMiddleware, sagaMiddleware),
         devtools,
-        reactReduxFirebase(config, authConfig),
-        applyMiddleware(interceptorMiddleware)
     )
 );
+
+sagaMiddleware.run(authSaga);
+sagaMiddleware.run(userSaga);
+sagaMiddleware.run(tablesSaga);

@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import classNames from 'classnames';
+import {withRouter} from 'react-router-dom'
 import _ from 'lodash';
-import {firebaseConnect, dataToJS, pathToJS} from 'react-redux-firebase'
 import {getCurrentUser, currentUserId} from 'Adapter/user';
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
@@ -19,12 +19,8 @@ const getTableById = id => ({
     ]
 })
 
-@firebaseConnect((props, firebase) => ([
-    getTableById(props.match.params.id)
-]))
-@connect(({firebase}) => ({
-    table: dataToJS(firebase, 'tables')
-}), {getCurrentUser})
+@withRouter
+@connect(null, {getCurrentUser})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);

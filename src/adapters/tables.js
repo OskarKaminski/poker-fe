@@ -1,4 +1,4 @@
-import db from './firedb';
+import {db} from './firebase';
 
 export const addTable = (table) => {
     const ref = db.ref('/tables').push();

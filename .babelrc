@@ -1,8 +1,16 @@
 {
-    "presets": [
-        ["es2015", {"modules": false}],
-        "stage-2",
-        "react"
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
     ],
-    "plugins": ["transform-decorators-legacy"]
+    "stage-2",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "syntax-async-generators"
+  ]
 }

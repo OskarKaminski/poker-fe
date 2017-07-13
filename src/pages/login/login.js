@@ -1,35 +1,16 @@
 import React from 'react';
-import {firebaseConnect, pathToJS} from 'react-redux-firebase';
 import {getUser} from 'Adapter/user';
 import {connect} from 'react-redux';
+import {login} from 'State/auth/auth.actions';
 import './login.scss';
 
-@firebaseConnect() // add this.props.firebase
-@connect( // map redux state to props
-    ({ firebase, auth }) => ({
-        authError: pathToJS(firebase, 'authError'),
-        auth
-    })
-)
+const props = ({auth}) => ({auth});
+
+@connect(props, {login})
 export class Login extends React.Component {
-    onLogin = (provider) => {
-        return this.props.firebase
-            .login({ provider, type: 'popup' })
-            .then(({user}) => {
-                getUser(user.uid).then(userData => {
-                    if(!userData.balance){
-                        const userDefaults = {
-                            login: user.displayName,
-                            balance: 2000
-                        }
-                        this.props.firebase.update(`/users/${user.uid}/`, userDefaults)
-                    }
-                })
-                this.props.history.push('/tables');
-            })
-            .catch((error) => {
-                console.log('there was an error', error)
-            })
+    onLogin = () => {
+        this.props.login();
+        this.props.history.push('/tables');
     }
     render() {
         return (

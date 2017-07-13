@@ -1,4 +1,4 @@
-import db, {auth} from './firedb';
+import {db, auth} from './firebase';
 
 export const getUser = (uid) => {
     var ref = db.ref(`/users/${uid}`);

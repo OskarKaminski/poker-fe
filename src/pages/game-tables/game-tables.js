@@ -1,17 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import map from 'lodash/map';
-import {firebaseConnect, dataToJS} from 'react-redux-firebase'
+import {withRouter} from 'react-router-dom'
 import {TablesListItem} from 'Molecule/TablesListItem/TablesListItem'
 import {Button} from 'Atom/Button/Button'
 import {addTable} from 'Adapter/tables';
+import {dbFetchTables} from 'State/tables/tables.actions'
 import './game-tables.scss'
 
-@firebaseConnect(['tables'])
-@connect(({firebase}) => ({
-    tables: dataToJS(firebase, 'tables')
-}))
+const props = ({tables}) => ({tables});
+
+@withRouter
+@connect(props, {dbFetchTables})
 export class GameTables extends React.Component {
+    componentWillMount(){
+        this.props.dbFetchTables();
+    }
     addTable = () => {
         addTable({
             id: 1,
