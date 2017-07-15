@@ -10,16 +10,18 @@ const renderPlayer = (player) => (
     </div>
 )
 
-const renderEmptySeat = (number, onSit) => (
-    <span onClick={()=>onSit(number)}>Sit</span>
-)
+const renderEmptySeat = (number, reserved, onSit) => {
+    return reserved ?
+        <span>Reserved</span> :
+        <span onClick={()=>onSit(number)}>Sit</span>
+}
 
 export const Seat = (props) => (
     <div className="seat">
         {
             props.player ?
                 renderPlayer(props.player) :
-                renderEmptySeat(props.number, props.onSit)
+                renderEmptySeat(props.number, props.reserved, props.onSit)
         }
     </div>
 )

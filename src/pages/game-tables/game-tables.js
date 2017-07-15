@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import map from 'lodash/map';
+import _ from 'lodash';
 import {withRouter} from 'react-router-dom'
 import {TablesListItem} from 'Molecule/TablesListItem/TablesListItem'
 import {Button} from 'Atom/Button/Button'
@@ -22,7 +22,25 @@ export class GameTables extends React.Component {
             name: 'table #1',
             stake: '0.10/0.20',
             numOfSeats: 4,
-            players: []
+            seats: [
+                {
+                    no: 1,
+                    reserved: false,
+                    player: null
+                },{
+                    no: 2,
+                    reserved: false,
+                    player: null
+                },{
+                    no: 3,
+                    reserved: false,
+                    player: null
+                },{
+                    no: 4,
+                    reserved: false,
+                    player: null
+                },
+            ]
         })
     }
     onJoinTable = (id) => {
@@ -35,11 +53,14 @@ export class GameTables extends React.Component {
                         onClick={this.addTable}/>
                 {
                     this.props.tables &&
-                    map(this.props.tables, ((table, key)=>(
-                        <TablesListItem {...table}
-                                        onJoinTable={this.onJoinTable}
-                                        key={key}/>
-                    )))
+                    _.map(this.props.tables, ((table, key)=>{
+                        return (
+                            <TablesListItem {...table}
+                                            tableKey={key}
+                                            onJoinTable={this.onJoinTable}
+                                            key={key}/>
+                        )
+                    }))
                 }
             </div>
         )

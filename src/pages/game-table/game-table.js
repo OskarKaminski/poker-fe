@@ -8,19 +8,13 @@ import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
 import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
+import {dbFetchSeats, seatReservation} from 'State/seats/seats.actions';
 import './game-table.scss';
 
-const getTableById = id => ({
-    path: 'tables',
-    queryParams: [
-        'orderByChild=id',
-        'limitToFirst=1',
-        'equalTo=' + id
-    ]
-})
+const props = ({user, seats}) => ({user, seats});
 
 @withRouter
-@connect(null, {getCurrentUser})
+@connect(props, {dbFetchSeats, seatReservation})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -28,47 +22,32 @@ export class GameTable extends React.Component {
             showJoinOptions: false
         }
     }
-
-    tableData = () => {
-        return _.toArray(this.props.table)[0];
-    }
-    seatsData = () => {
-        const numOfSeats = this.tableData().numOfSeats;
-        return _.map(new Array(numOfSeats), (el, i) => {
-            const seatOccupied = _.find(this.tableData().seats, {number: i+1});
-            return seatOccupied || {number: i+1};
-        })
-    }
-    tableKey = () => {
-        return _.keys(this.props.table)[0];
+    componentDidMount(){
+        this.props.dbFetchSeats(this.props.match.params.id);
     }
     onSit = (number) => {
+        this.props.seatReservation(number, this.props.user.displayName);
         this.setState({
             showJoinOptions: number
         });
     }
     onJoinOptionsEnter = (money) => {
-        getCurrentUser().then(user => {
-            const seat = {
-                number: this.state.showJoinOptions,
-                player: {
-                    login: user.login,
-                    balance: money
-                }
+        const seat = {
+            number: this.state.showJoinOptions,
+            player: {
+                login: this.props.user.login,
+                balance: money
             }
-            this.props.firebase.update(`/users/${currentUserId()}`, {balance: user.balance - money});
-            this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
-            this.setState({showJoinOptions: false});
-        })
+        }
+        this.props.firebase.update(`/users/${currentUserId()}`, {balance: user.balance - money});
+        this.props.firebase.push(`/tables/${this.tableKey()}/seats`, seat);
+        this.setState({showJoinOptions: false});
     }
     render() {
-        if (!this.props.table) {
-            return null;
-        }
-        const table = this.tableData();
-        const seats = this.seatsData();
+        const numOfSeats = this.props.seats.length;
+        const seats = this.props.seats;
         return (
-            <div className={classNames('game-table', `game-table--seats-${table.numOfSeats}`)}>
+            <div className={classNames('game-table', `game-table--seats-${numOfSeats}`)}>
                 {/*<div className="game-table__info">*/}
                     {/*<p>{table.name} {table.stake}</p>*/}
                 {/*</div>*/}
@@ -78,10 +57,11 @@ export class GameTable extends React.Component {
                 }
                 {
                     _.map(seats, (seat) => (
-                        <div className={classNames('game-table__seat', `game-table__seat--${seat.number}`)}
-                             key={seat.number}>
-                            <Seat number={seat.number}
+                        <div className={classNames('game-table__seat', `game-table__seat--${seat.no}`)}
+                             key={seat.no}>
+                            <Seat number={seat.no}
                                   player={seat.player}
+                                  reserved={seat.reserved}
                                   onSit={this.onSit}/>
                         </div>
                     ))
