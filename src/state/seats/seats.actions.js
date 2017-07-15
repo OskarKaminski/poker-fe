@@ -3,16 +3,17 @@ export const dbFetchSeats = (tableKey) => ({
     type: 'DB/FETCHING_SEATS',
     tableKey
 })
+export const dbSeatReservation = (tableKey, seatNumber, user) => ({
+    type: 'DB/SEAT_RESERVATION',
+    tableKey,
+    seatNumber,
+    user
+})
 
 // Store
 export const storeUpdateSeats = (payload) => ({
     type: 'STORE/UPDATE_SEATS',
     payload
-})
-export const seatReservation = (seatNumber, playerNickname) => ({
-    type: 'SEAT_RESERVATION',
-    seatNumber,
-    playerNickname
 })
 export const seatEnroll = (amount) => ({
     type: 'SEAT_ENROLL',

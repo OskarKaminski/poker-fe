@@ -4,7 +4,7 @@ import {storeUpdateUserProfile} from './user.actions';
 
 function* fetchUser({payload}){
     const user = yield db.ref('/users/' + payload.uid).once('value');
-    yield put(storeUpdateUserProfile(user));
+    yield put(storeUpdateUserProfile(user.val()));
 }
 
 export function* userSaga() {

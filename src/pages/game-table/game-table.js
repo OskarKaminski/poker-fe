@@ -8,13 +8,13 @@ import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
 import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
-import {dbFetchSeats, seatReservation} from 'State/seats/seats.actions';
+import {dbFetchSeats, dbSeatReservation} from 'State/seats/seats.actions';
 import './game-table.scss';
 
-const props = ({user, seats}) => ({user, seats});
+const props = ({user, seats, auth}) => ({user, seats, auth});
 
 @withRouter
-@connect(props, {dbFetchSeats, seatReservation})
+@connect(props, {dbFetchSeats, dbSeatReservation})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -22,14 +22,22 @@ export class GameTable extends React.Component {
             showJoinOptions: false
         }
     }
-    componentDidMount(){
+    componentWillReceiveProps(){
+        const userId = this.props.auth.uid;
+        const seats = this.props.seats;
+        const showJoinOptions = _.filter(seats, seat => {
+            return seat.reserved && seat.reserved.uid === userId
+        }).length > 0;
+        this.setState({showJoinOptions});
         this.props.dbFetchSeats(this.props.match.params.id);
     }
     onSit = (number) => {
-        this.props.seatReservation(number, this.props.user.displayName);
-        this.setState({
-            showJoinOptions: number
-        });
+        const tableKey = this.props.match.params.id;
+        const user = {
+            uid: this.props.auth.uid,
+            displayName: this.props.user.displayName
+        }
+        this.props.dbSeatReservation(tableKey, number, user);
     }
     onJoinOptionsEnter = (money) => {
         const seat = {
@@ -56,10 +64,11 @@ export class GameTable extends React.Component {
                     <JoinOptions onJoin={this.onJoinOptionsEnter}/>
                 }
                 {
-                    _.map(seats, (seat) => (
+                    _.map(seats, (seat, key) => (
                         <div className={classNames('game-table__seat', `game-table__seat--${seat.no}`)}
                              key={seat.no}>
                             <Seat number={seat.no}
+                                  seatKey={key}
                                   player={seat.player}
                                   reserved={seat.reserved}
                                   onSit={this.onSit}/>
