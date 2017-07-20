@@ -10,7 +10,7 @@ import {Login} from 'Page/login/login';
 import 'bootstrap/dist/css/bootstrap.css';
 import './app.scss';
 
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({player}) => ({player});
 
 @withRouter
 @connect(mapStateToProps, {authStateChanged})
@@ -23,7 +23,7 @@ export default class App extends Component {
     }
 
     render() {
-        if(!this.props.auth.uid){
+        if(!this.props.player.uid){
             return (
                 <div>
                     Loading...
