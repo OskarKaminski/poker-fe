@@ -8,9 +8,8 @@ export function* fetchSeats({tableKey}){
 }
 function* reserveSeat({tableKey, seatNumber, user}){
     yield db.ref(`/tables/${tableKey}/seats/${seatNumber}`)
-        .update({reserved: user});
+        .update({status: 'reserved', player: user});
     yield addUsersTable({tableKey, seatNumber, userId: user.uid});
-    yield put(dbFetchSeats(tableKey));
 }
 function* sit({tableKey, seatNumber, user, amount}){
     yield db.ref(`/tables/${tableKey}/seats/${seatNumber}`)
@@ -29,10 +28,6 @@ function* addUsersTable({tableKey, seatNumber, userId}){
 // }
 
 export function* seatsSaga() {
-    yield takeLatest('DB/FETCHING_SEATS', function* ({tableKey}) {
-        const seats = yield fetchSeats({tableKey});
-        yield put(storeUpdateSeats(seats));
-    });
     yield takeLatest('DB/SEAT_RESERVATION', reserveSeat);
     yield takeLatest('DB/SEAT_SIT', sit);
     // yield takeLatest('DB/SEAT_ENROLL', enroll);

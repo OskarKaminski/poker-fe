@@ -4,7 +4,7 @@ import {balanceReducer} from './balance.reducer'
 
 const profileReducer = (state = {}, action) => {
     switch(action.type){
-        case 'STORE/UPDATE_USER_PROFILE':
+        case 'USER_PROFILE_UPDATED':
             return action.payload
     }
     return state;

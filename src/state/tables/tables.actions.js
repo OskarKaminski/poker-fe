@@ -13,6 +13,6 @@ export const storeUpdateTables = (payload) => ({
     payload
 })
 export const storeUpdateTable = (payload) => ({
-    type: 'STORE/UPDATE_TABLE',
+    type: 'CURRENT_TABLE_UPDATED',
     payload
 })

@@ -10,7 +10,7 @@ export const dbCreateUserProfile = (payload) => ({
 
 // ACTIONS on store
 export const storeUpdateUserProfile = (payload) => ({
-    type: 'STORE/UPDATE_USER_PROFILE',
+    type: 'USER_PROFILE_UPDATED',
     payload
 })
 // export const updateBalance = (balance) => ({

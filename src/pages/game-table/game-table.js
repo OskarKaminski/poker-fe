@@ -1,21 +1,24 @@
+import './game-table.scss';
 import React from 'react'
+import _ from 'lodash';
 import {connect} from 'react-redux'
 import classNames from 'classnames';
 import {withRouter} from 'react-router-dom'
-import _ from 'lodash';
-import {getCurrentUser, currentUserId} from 'Adapter/user';
+//Adapters
+import {listenTable} from 'Adapter/tables';
+//Components
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
 import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
+//State
 import {dbSeatReservation, dbSeatSit, dbSeatEnroll} from 'State/seats/seats.actions';
-import {dbFetchTable} from 'State/tables/tables.actions';
-import './game-table.scss';
+import {storeUpdateTable} from 'State/tables/tables.actions';
 
 const props = ({currentTable, player}) => ({currentTable, player});
 
 @withRouter
-@connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, dbFetchTable})
+@connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, storeUpdateTable})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -25,15 +28,7 @@ export class GameTable extends React.Component {
     }
     componentDidMount(){
         const tableKey = this.props.match.params.id;
-        this.props.dbFetchTable(tableKey);
-    }
-    componentWillReceiveProps(){
-        const userId = this.props.player.uid;
-        const seats = this.props.seats;
-        const showJoinOptions = _.filter(seats, seat => {
-            return seat.reserved && seat.reserved.uid === userId
-        }).length > 0;
-        this.setState({showJoinOptions});
+        listenTable(tableKey, this.props.storeUpdateTable)
     }
     onSit = (number) => {
         const tableKey = this.props.match.params.id;
