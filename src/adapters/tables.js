@@ -9,3 +9,8 @@ export const listenTable = (id, cb) => {
         return cb(snapshot.val());
     });
 }
+export const listenTables = (cb) => {
+    return db.ref('/tables').on('value', snapshot => {
+        return cb(snapshot.val());
+    });
+}

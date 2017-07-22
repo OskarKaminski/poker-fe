@@ -5,7 +5,6 @@ import createHistory from 'history/createBrowserHistory'
 import {routerMiddleware} from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 import {authSaga} from './auth/auth.saga';
-import {tablesSaga} from './tables/tables.saga';
 import {seatsSaga} from './seats/seats.saga';
 import {tableSaga} from './table/table.saga';
 
@@ -24,6 +23,5 @@ export const store = createStore(
 );
 
 sagaMiddleware.run(authSaga);
-sagaMiddleware.run(tablesSaga);
 sagaMiddleware.run(seatsSaga);
 sagaMiddleware.run(tableSaga);

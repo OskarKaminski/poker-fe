@@ -1,3 +1,5 @@
+// import {updatedTables} from './tables/tables.actions'
+
 export default {
     game: {
         check: 'GAME/CHECK',
@@ -22,3 +24,4 @@ export default {
         updated: 'AUTH/UPDATED'
     }
 }
+

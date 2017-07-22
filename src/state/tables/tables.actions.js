@@ -1,10 +1,6 @@
-// ACTIONS on DB
-export const dbFetchTables = () => ({
-    type: 'DB/FETCHING_TABLES'
-});
+import actions from '../actions';
 
-// ACTIONS on store
-export const storeUpdateTables = (payload) => ({
-    type: 'STORE/UPDATE_TABLES',
+export const updatedTables = (payload) => ({
+    type: actions.tables.updated,
     payload
 })

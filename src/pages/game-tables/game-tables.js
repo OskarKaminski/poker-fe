@@ -4,17 +4,17 @@ import _ from 'lodash';
 import {withRouter} from 'react-router-dom'
 import {TablesListItem} from 'Molecule/TablesListItem/TablesListItem'
 import {Button} from 'Atom/Button/Button'
-import {addTable} from 'Adapter/tables';
-import {dbFetchTables} from 'State/tables/tables.actions'
+import {addTable, listenTables} from 'Adapter/tables';
+import {updatedTables} from 'State/tables/tables.actions';
 import './game-tables.scss'
 
 const props = ({tables}) => ({tables});
 
 @withRouter
-@connect(props, {dbFetchTables})
+@connect(props, {updatedTables})
 export class GameTables extends React.Component {
     componentWillMount(){
-        this.props.dbFetchTables();
+        listenTables(this.props.updatedTables);
     }
     addTable = () => {
         addTable({
