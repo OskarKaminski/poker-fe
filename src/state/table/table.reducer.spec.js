@@ -1,12 +1,13 @@
 import mockedTable from './table.mocks.json';
-import {currentTableReducer, tableInfoReducer} from './table.reducer';
+import actions from '../actions';
+import {tableReducer, tableInfoReducer} from './table.reducer';
 
 describe('Table reducer', () => {
-    describe('CURRENT_TABLE_UPDATED', () => {
+    describe(actions.table.updated, () => {
         it(`Should update info`, () => {
             const expected = {id: 'test'};
             const action = {
-                type: 'CURRENT_TABLE_UPDATED',
+                type: actions.table.updated,
                 payload: mockedTable
             }
             const store = tableInfoReducer({}, action)
@@ -18,10 +19,10 @@ describe('Table reducer', () => {
                 seats: mockedTable.seats
             }
             const action = {
-                type: 'CURRENT_TABLE_UPDATED',
+                type: actions.table.updated,
                 payload: mockedTable
             }
-            const store = currentTableReducer({}, action)
+            const store = tableReducer({}, action)
             expect(store).toEqual(expected);
         });
     });

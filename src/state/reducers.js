@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux'
 import {tablesReducer} from './tables/tables-reducer';
-import {tableReducer} from './tables/table.reducer';
-import {playerReducer} from './player/player.reducer';
+import {tableReducer} from './table/table.reducer';
+import {userReducer} from './user/user.reducer';
 
 export const rootReducer = combineReducers({
     router: routerReducer,
     tables: tablesReducer,
-    player: playerReducer,
-    currentTable: tableReducer
+    user: userReducer,
+    table: tableReducer
 });
 
 const exampleOfPlayer = {

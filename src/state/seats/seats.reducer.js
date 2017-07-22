@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import actions from '../actions';
 import {seatReducer} from './seat.reducer'
 
 // const changeReservation = (seats, seatNumber, reserved) => {
@@ -9,7 +10,7 @@ import {seatReducer} from './seat.reducer'
 
 export const seatsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'CURRENT_TABLE_UPDATED':
+        case actions.table.updated:
             return action.payload.seats;
         case 'USER_LEAVES_SEAT':
             return _.map(state, seat => seatReducer(seat, action));

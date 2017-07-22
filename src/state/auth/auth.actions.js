@@ -1,3 +1,5 @@
+import actions from '../actions';
+
 export const login = (provider = null, config = {}) => ({
     type: 'LOGIN',
     provider,
@@ -5,6 +7,6 @@ export const login = (provider = null, config = {}) => ({
 })
 
 export const authStateChanged = (payload) => ({
-    type: 'AUTH_STATE_CHANGED',
+    type: actions.auth.updated,
     payload
 })

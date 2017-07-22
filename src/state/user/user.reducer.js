@@ -1,25 +1,24 @@
 import {combineReducers} from 'redux';
-import {currentTableReducer} from '../current-table/current-table.reducer'
+import actions from '../actions';
 import {balanceReducer} from './balance.reducer'
 
 const profileReducer = (state = {}, action) => {
     switch(action.type){
-        case 'USER_PROFILE_UPDATED':
+        case actions.user.updated:
             return action.payload
     }
     return state;
 }
 const userIdReducer = (state = {}, action) => {
     switch(action.type){
-        case 'AUTH_STATE_CHANGED':
+        case actions.auth.updated:
             return action.payload.uid;
     }
     return state;
 }
 
-export const playerReducer = combineReducers({
+export const userReducer = combineReducers({
     uid: userIdReducer,
     profile: profileReducer,
     balance: balanceReducer,
-    currentTable: currentTableReducer
 });

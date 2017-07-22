@@ -13,9 +13,9 @@ import {Seat} from 'Molecule/Seat/Seat';
 import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
 //State
 import {dbSeatReservation, dbSeatSit, dbSeatEnroll} from 'State/seats/seats.actions';
-import {storeUpdateTable} from 'State/tables/tables.actions';
+import {tableUpdated} from 'State/table/table.actions';
 
-const props = ({currentTable, player}) => ({currentTable, player});
+const props = ({table, player}) => ({table, player});
 
 const trackUserSeat = (seats, userId) => {
     return _.find(seats, seat => {
@@ -24,7 +24,7 @@ const trackUserSeat = (seats, userId) => {
 }
 
 @withRouter
-@connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, storeUpdateTable})
+@connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, tableUpdated})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ export class GameTable extends React.Component {
     componentDidMount(){
         const tableKey = this.props.match.params.id;
         listenTable(tableKey, table => {
-            this.props.storeUpdateTable(table);
+            this.props.tableUpdated(table);
         });
     }
     onSit = (number) => {
@@ -56,7 +56,7 @@ export class GameTable extends React.Component {
         // this.props.dbSeatEnroll(money);
     }
     render() {
-        const seats = this.props.currentTable.seats;
+        const seats = this.props.table.seats;
         const numOfSeats = seats && seats.length;
         return (
             <div className={classNames('game-table', `game-table--seats-${numOfSeats}`)}>

@@ -10,3 +10,7 @@ export const currentUserId = () => {
 export const getCurrentUser = () => {
     return getUser(currentUserId());
 }
+export const onUserChange = (id, cb) => {
+    return db.ref('/users/' + id)
+        .on('value', (snapshot) => cb(snapshot.val()));
+}

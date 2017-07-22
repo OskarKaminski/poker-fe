@@ -1,3 +1,5 @@
+import actions from '../actions';
+
 export const authReducer = (state = {}, action) => {
     switch(action.type){
         case 'LOGIN':
@@ -5,7 +7,7 @@ export const authReducer = (state = {}, action) => {
             return state
         case 'LOGIN_SUCCESS':
             return state
-        case 'AUTH_STATE_CHANGED':
+        case actions.auth.updated:
             return action.payload
     }
     return state;
