@@ -17,6 +17,12 @@ import {storeUpdateTable} from 'State/tables/tables.actions';
 
 const props = ({currentTable, player}) => ({currentTable, player});
 
+const trackUserSeat = (seats, userId) => {
+    return _.find(seats, seat => {
+        return seat.player && seat.player.uid === userId;
+    })
+}
+
 @withRouter
 @connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, storeUpdateTable})
 export class GameTable extends React.Component {
@@ -28,7 +34,9 @@ export class GameTable extends React.Component {
     }
     componentDidMount(){
         const tableKey = this.props.match.params.id;
-        listenTable(tableKey, this.props.storeUpdateTable)
+        listenTable(tableKey, table => {
+            this.props.storeUpdateTable(table);
+        });
     }
     onSit = (number) => {
         const tableKey = this.props.match.params.id;
