@@ -1,39 +1,19 @@
 {
-  "allTaken": [
-    {
-      "no": 1,
-      "user": {
-        "id": "userId1",
-        "nickname": "User1"
-      },
-      "balance": 1000,
-      "status": 2,
-      "cards": [{}, {}]
-    }, {
-      "no": 2,
-      "user": {
-        "id": "userId2",
-        "nickname": "User2"
-      },
-      "balance": 1000,
-      "status": 2,
-      "cards": null
-    }
-  ],
-  "allEmpty": [
-    {
-      "no": 1,
-      "user": null,
-      "balance": null,
-      "status": 0,
-      "cards": null
+  "taken": {
+    "no": 1,
+    "user": {
+      "id": "userId1",
+      "nickname": "User1"
     },
-    {
-      "no": 2,
-      "user": null,
-      "balance": null,
-      "status": 0,
-      "cards": null
-    }
-  ]
+    "balance": 1000,
+    "status": 2,
+    "cards": [{}, {}]
+  },
+  "empty": {
+    "no": 1,
+    "user": null,
+    "balance": null,
+    "status": 0,
+    "cards": null
+  }
 }
