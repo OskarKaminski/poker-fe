@@ -1,0 +1,15 @@
+{
+  "id": "test",
+  "seats": [
+    {
+      "no": 1,
+      "user": {
+        "id": "userId1",
+        "nickname": "User1"
+      },
+      "balance": 1000,
+      "status": 2,
+      "cards": [{}, {}]
+    }
+  ]
+}
