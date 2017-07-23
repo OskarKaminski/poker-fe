@@ -11,3 +11,8 @@ export const userUpdated = (payload) => ({
     type: actions.user.updated,
     payload
 })
+export const checkSeatNumber = (table, userId) => ({
+    type: actions.user.checkSeatNumber,
+    table,
+    userId
+})

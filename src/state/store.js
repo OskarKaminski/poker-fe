@@ -3,10 +3,8 @@ import {rootReducer} from './reducers';
 import {config} from 'Adapter/firebase.config';
 import createHistory from 'history/createBrowserHistory'
 import {routerMiddleware} from 'react-router-redux'
-import createSagaMiddleware from 'redux-saga'
-import {authSaga} from './auth/auth.saga';
-import {seatsSaga} from './seats/seats.saga';
-import {tableSaga} from './table/table.saga';
+import createSagaMiddleware from 'redux-saga';
+import {seatsSaga} from 'State/seats/seats.saga';
 
 const devtools = window['devToolsExtension'] ?
     window['devToolsExtension']() : f => f;
@@ -22,6 +20,6 @@ export const store = createStore(
     )
 );
 
-sagaMiddleware.run(authSaga);
+// sagaMiddleware.run(authSaga);
 sagaMiddleware.run(seatsSaga);
-sagaMiddleware.run(tableSaga);
+// sagaMiddleware.run(tableSaga);

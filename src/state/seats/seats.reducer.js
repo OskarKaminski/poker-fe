@@ -16,6 +16,8 @@ export const seatsReducer = (state = [], action) => {
             return _.map(state, seat => seatReducer(seat, action));
         case 'USER_JOINS_SEAT':
             return _.map(state, seat => seatReducer(seat, action));
+        // case actions.seat.reserved:
+        //     return _.map(state, seat => seatReducer(seat, action));
     }
     return state;
 }

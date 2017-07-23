@@ -1,5 +1,3 @@
-// import {updatedTables} from './tables/tables.actions'
-
 export default {
     game: {
         check: 'GAME/CHECK',
@@ -18,10 +16,16 @@ export default {
         updated: 'TABLES/UPDATED'
     },
     user: {
-        updated: 'USER/UPDATED'
+        updated: 'USER/UPDATED',
+        checkSeatNumber: 'USER/CHECK_SEAT_NUMBER'
     },
     auth: {
         updated: 'AUTH/UPDATED'
+    },
+    seat: {
+        playerJoined: 'SEAT/PLAYER_JOINED',
+        playerLeft: 'SEAT/PLAYER_LEFT',
+        reserved: 'SEAT/RESERVED'
     }
 }
 

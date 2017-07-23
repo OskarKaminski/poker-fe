@@ -1,7 +1,9 @@
+import actions from '../actions';
+
 export const seatReducer = (state = {}, action) => {
-    switch (action.type) {
-        case 'USER_LEAVES_SEAT':
-            if(state.no === action.seatNo){
+    if (state.no === action.seatNo) {
+        switch (action.type) {
+            case actions.seat.playerLeft:
                 return {
                     ...state,
                     user: null,
@@ -9,10 +11,7 @@ export const seatReducer = (state = {}, action) => {
                     status: 0,
                     cards: null
                 }
-            }
-            break;
-        case 'USER_JOINS_SEAT':
-            if(state.no === action.seatNo){
+            case actions.seat.playerJoined:
                 return {
                     ...state,
                     user: action.user,
@@ -20,8 +19,12 @@ export const seatReducer = (state = {}, action) => {
                     status: 2,
                     cards: null
                 }
-            }
-            break;
+            case actions.seat.reserved:
+                if (state.status !== 2) {
+                    return {...state, status: 1, user: action.user}
+                }
+                break;
+        }
     }
     return state;
 }

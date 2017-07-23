@@ -5,17 +5,18 @@ import {connect} from 'react-redux'
 import classNames from 'classnames';
 import {withRouter} from 'react-router-dom'
 //Adapters
-import {listenTable} from 'Adapter/tables';
+import {listenTable, reserveSeat} from 'Adapter/tables';
 //Components
 import {Player} from 'Component/player/player';
 import {Board} from 'Component/board/board';
 import {Seat} from 'Molecule/Seat/Seat';
 import {JoinOptions} from 'Molecule/JoinOptions/JoinOptions';
 //State
-import {dbSeatReservation, dbSeatSit, dbSeatEnroll} from 'State/seats/seats.actions';
+import {seatReserved} from 'State/seats/seats.actions';
 import {tableUpdated} from 'State/table/table.actions';
+import {checkSeatNumber} from 'State/user/user.actions';
 
-const props = ({table, player}) => ({table, player});
+const props = ({table, user}) => ({table, user});
 
 const trackUserSeat = (seats, userId) => {
     return _.find(seats, seat => {
@@ -24,7 +25,7 @@ const trackUserSeat = (seats, userId) => {
 }
 
 @withRouter
-@connect(props, {dbSeatReservation, dbSeatSit, dbSeatEnroll, tableUpdated})
+@connect(props, {tableUpdated, seatReserved, checkSeatNumber})
 export class GameTable extends React.Component {
     constructor(props) {
         super(props);
@@ -32,19 +33,17 @@ export class GameTable extends React.Component {
             showJoinOptions: false
         }
     }
-    componentDidMount(){
+
+    componentDidMount() {
         const tableKey = this.props.match.params.id;
         listenTable(tableKey, table => {
-            this.props.tableUpdated(table);
+            this.props.tableUpdated(table, tableKey);
+            this.props.checkSeatNumber(table, this.props.user.uid);
         });
     }
+
     onSit = (number) => {
-        const tableKey = this.props.match.params.id;
-        const user = {
-            uid: this.props.player.uid,
-            displayName: this.props.player.profile.displayName
-        }
-        this.props.dbSeatReservation(tableKey, number, user);
+        this.props.seatReserved(number);
     }
     onJoinOptionsEnter = (number, money) => {
         const tableKey = this.props.match.params.id;
@@ -55,13 +54,14 @@ export class GameTable extends React.Component {
         this.props.dbSeatSit(tableKey, number, user, money);
         // this.props.dbSeatEnroll(money);
     }
+
     render() {
         const seats = this.props.table.seats;
         const numOfSeats = seats && seats.length;
         return (
             <div className={classNames('game-table', `game-table--seats-${numOfSeats}`)}>
                 {/*<div className="game-table__info">*/}
-                    {/*<p>{table.name} {table.stake}</p>*/}
+                {/*<p>{table.name} {table.stake}</p>*/}
                 {/*</div>*/}
                 {
                     this.state.showJoinOptions &&

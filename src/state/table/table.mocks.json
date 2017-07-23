@@ -3,7 +3,7 @@
   "seats": [
     {
       "no": 1,
-      "user": {
+      "player": {
         "id": "userId1",
         "nickname": "User1"
       },

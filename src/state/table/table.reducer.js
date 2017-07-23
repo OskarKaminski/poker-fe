@@ -11,9 +11,16 @@ export const tableInfoReducer = (state = {}, action) => {
     }
     return state;
 }
+export const keyReducer = (state = {}, action) => {
+    switch (action.type) {
+        case actions.table.updated:
+            return action.key;
+    }
+    return state;
+}
 
 export const tableReducer = combineReducers({
     info: tableInfoReducer,
-    seats: seatsReducer
-    // dealer
+    seats: seatsReducer,
+    key: keyReducer
 });

@@ -14,13 +14,16 @@ describe('Table reducer', () => {
             expect(store).toEqual(expected);
         });
         it(`Should update all table`, () => {
+            const tableKey = 'key';
             const expected = {
                 info: {id: 'test'},
-                seats: mockedTable.seats
+                seats: mockedTable.seats,
+                key: tableKey
             }
             const action = {
                 type: actions.table.updated,
-                payload: mockedTable
+                payload: mockedTable,
+                key: tableKey
             }
             const store = tableReducer({}, action)
             expect(store).toEqual(expected);
