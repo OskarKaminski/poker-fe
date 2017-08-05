@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "relay": "relay-compiler --src ./src --schema ./config/schema.json"
+    "relay": "relay-compiler --src ./src --schema ./config/schema.json --watch"
   },
   "author": "",
   "license": "ISC",
