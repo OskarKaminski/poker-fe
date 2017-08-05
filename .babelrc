@@ -6,10 +6,11 @@
         "modules": false
       }
     ],
-    "stage-2",
+    "stage-0",
     "react"
   ],
   "plugins": [
+    ["relay", {"schema": "config/schema.json"}],
     "transform-decorators-legacy",
     "syntax-async-generators"
   ]
