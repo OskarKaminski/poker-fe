@@ -128,6 +128,7 @@ const config = {
         hot: true,
         compress: true,
         port: 8090,
+        proxy: {'/graphql': 'http://localhost:3002/graphql'},
         quiet: true,
         historyApiFallback: true,
         inline: true,

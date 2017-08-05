@@ -11,7 +11,7 @@
   ],
   "plugins": [
     ["relay", {"schema": "config/schema.json"}],
-    "transform-decorators-legacy",
-    "syntax-async-generators"
+    "transform-runtime",
+    "transform-decorators-legacy"
   ]
 }
