@@ -3,32 +3,21 @@ import {
     graphql,
     createFragmentContainer
 } from 'react-relay';
-import {QuoteContainer} from './Quote';
+import Tables from './app/tables/Tables';
 
-const Quotes = ({store}) => {
-    return (
-        <div className="quotes-list">
-            {
-                store.allQuotes.map(quote => (
-                    <QuoteContainer
-                        key={quote.id}
-                        quote={quote}
-                    />
-                ))
-            }
-        </div>
-    )
-}
+const App = ({store}) => (
+    <div className="app">
+        <Tables
+            store={store}
+        />
+    </div>
+)
 
-export const App = createFragmentContainer(
-    Quotes,
+export default createFragmentContainer(
+    App,
     graphql`
-        fragment App_store on Users {
-            countUsers,
-            allQuotes {
-                id,
-                ...Quote_quote
-            }
+        fragment App_store on Store {
+            ...Tables_store
         }
     `
 );

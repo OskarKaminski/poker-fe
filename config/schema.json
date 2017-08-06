@@ -18,7 +18,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Users",
+                "name": "Store",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -32,31 +32,19 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Users",
+          "name": "Store",
           "description": null,
           "fields": [
             {
-              "name": "countUsers",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "allQuotes",
-              "description": "A list of the quotes in the db",
+              "name": "tables",
+              "description": "A list of the tables in the db",
               "args": [],
               "type": {
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Quote",
+                  "name": "Table",
                   "ofType": null
                 }
               },
@@ -70,18 +58,8 @@
           "possibleTypes": null
         },
         {
-          "kind": "SCALAR",
-          "name": "Int",
-          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
           "kind": "OBJECT",
-          "name": "Quote",
+          "name": "Table",
           "description": null,
           "fields": [
             {
@@ -97,7 +75,7 @@
               "deprecationReason": null
             },
             {
-              "name": "text",
+              "name": "name",
               "description": null,
               "args": [],
               "type": {
@@ -109,7 +87,19 @@
               "deprecationReason": null
             },
             {
-              "name": "author",
+              "name": "numOfSeats",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "stake",
               "description": null,
               "args": [],
               "type": {

@@ -14,7 +14,7 @@ import {
     graphql
 } from 'react-relay';
 import {environment} from './adapters/relay-environment';
-import {App} from './App';
+import App from './App';
 
 const render = () => {
     ReactDOM.render(
