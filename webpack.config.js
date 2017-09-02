@@ -117,6 +117,14 @@ const config = {
                     },
                 ],
             },
+            {
+                test: /\.mp3$/,
+                use: [
+                    {
+                        loader: 'file-loader'
+                    }
+                ],
+            },
         ],
     },
     plugins: [

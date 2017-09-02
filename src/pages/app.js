@@ -23,10 +23,29 @@ export default class App extends Component {
             props.authStateChanged(authData)
             onUserChange(authData.uid, props.userUpdated)
         })
+        this.state = {
+            fullScreen: false
+        }
+    }
+
+    componentDidMount(){
+        document.onwebkitfullscreenchange = () => {
+            this.setState((previous) => {
+                fullScreen: !previous.fullScreen
+            });
+        }
+
+        // Fix for mozilla
+        document.onmozfullscreenchange = document.onwebkitfullscreenchange;
+    }
+
+    enterFillScreen = () => {
+        // TODO - add fullscreen for mozilla
+        document.getElementById('app').webkitRequestFullscreen();
     }
 
     render() {
-        if(!this.props.user.uid){
+        if (!this.props.user.uid) {
             return (
                 <div>
                     Loading...
@@ -35,6 +54,13 @@ export default class App extends Component {
         }
         return (
             <div className='app'>
+                {
+                    !document.webkitFullscreenElement &&
+                    <div className="app__full-screen-btn">
+                        <div className="btn" onClick={this.enterFillScreen}>Full screen</div>
+                    </div>
+
+                }
                 <Switch>
                     <Route path="/table/:id" component={GameTable}/>
                     <Route path="/tables" component={GameTables}/>
