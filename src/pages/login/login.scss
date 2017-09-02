@@ -2,6 +2,11 @@
   //width: 100%;
 }
 
+.login{
+  display: flex;
+  height: 100vh;
+}
+
 .login-register {
   @media (max-width: 375px) {
     display: none;
@@ -10,13 +15,9 @@
   background-color: #19171c;
   height: 100%;
   width: 80%;
-  position: absolute;
-
-  &__image{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  overflow: hidden;
+  img {
+    height:100%;
   }
 }
 
@@ -31,10 +32,9 @@
 }
 
 .login-sidebar {
-  position: absolute;
-  right: 0px;
   margin-top: 0px;
   height: 100%;
+  width: 20%;
 }
 
 .white-box {

@@ -117,6 +117,14 @@ const config = {
                     },
                 ],
             },
+            {
+                test: /\.mp3$/,
+                use: [
+                    {
+                        loader: 'file-loader'
+                    }
+                ],
+            },
         ],
     },
     plugins: [
@@ -127,7 +135,7 @@ const config = {
     devServer: {
         hot: true,
         compress: true,
-        port: 8090,
+        port: 8080,
         quiet: true,
         historyApiFallback: true,
         inline: true,
