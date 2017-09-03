@@ -16,7 +16,6 @@ export default createFragmentContainer(
     graphql`
         fragment TablesItem_table on Table {
             name,
-            numOfSeats,
             stake
         }
     `
