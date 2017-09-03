@@ -3,33 +3,25 @@ import 'babel-polyfill';
 import 'whatwg-fetch';
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactDOM from 'react-dom';
-import {
-    QueryRenderer,
-    graphql
-} from 'react-relay';
+import BrowserProtocol from 'farce/lib/BrowserProtocol';
+import queryMiddleware from 'farce/lib/queryMiddleware';
+import createFarceRouter from 'found/lib/createFarceRouter';
+import createRender from 'found/lib/createRender';
+import { Resolver } from 'found-relay';
 import {environment} from './adapters/relay-environment';
-import App from './App';
+import routes from './routes';
+
+const Router = createFarceRouter({
+    historyProtocol: new BrowserProtocol(),
+    historyMiddlewares: [queryMiddleware],
+    routeConfig: routes,
+
+    render: createRender({}),
+});
 
 const render = () => {
     ReactDOM.render(
-        <QueryRenderer
-            environment={environment}
-            query={graphql`
-                query src_indexQuery{
-                    store {
-                        ...App_store
-                    }
-                }
-              `}
-            variables={{}}
-            render={({error, props}) => {
-                if (props) {
-                    return <App store={props.store} />;
-                } else {
-                    return <div>Loading</div>;
-                }
-            }}
-        />,
+        <Router resolver={new Resolver(environment)} />,
         document.getElementById('app')
     )
 }
