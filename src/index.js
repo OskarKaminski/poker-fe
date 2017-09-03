@@ -2,13 +2,7 @@ import React from 'react';
 import 'babel-polyfill';
 import 'whatwg-fetch';
 import 'bootstrap/dist/css/bootstrap.css';
-// import {Provider} from 'react-redux';
-// import {store} from 'State/store';
-// import {ConnectedRouter} from 'react-router-redux'
-// import {history} from 'History';
 import ReactDOM from 'react-dom';
-// import App from 'Page/app';
-// import QuotesLibrary from './pages/quotes/quotes';
 import {
     QueryRenderer,
     graphql
