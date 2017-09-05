@@ -3,13 +3,11 @@ import {
     graphql,
     createFragmentContainer
 } from 'react-relay';
-import Tables from './app/tables/Tables';
 
-const App = ({store}) => (
+const App = ({children}) => (
     <div className="app">
-        <Tables
-            store={store}
-        />
+        App2
+        {children}
     </div>
 )
 
