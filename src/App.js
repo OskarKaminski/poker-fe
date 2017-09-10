@@ -4,9 +4,9 @@ import {
     createFragmentContainer
 } from 'react-relay';
 
-const App = ({children}) => (
+const App = ({children, store}) => (
     <div className="app">
-        App2
+        Num of users: {store.countUsers}
         {children}
     </div>
 )
@@ -15,7 +15,7 @@ export default createFragmentContainer(
     App,
     graphql`
         fragment App_store on Store {
-            ...Tables_store
+            countUsers
         }
     `
 );
