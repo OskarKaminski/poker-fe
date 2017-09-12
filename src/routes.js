@@ -11,8 +11,7 @@ const tableQuery = graphql`
 query routesTableQuery($tableId: String){
     store {
         table(id: $tableId){
-            name
-            stake
+            ...Table_table
         }
     }
 }
@@ -35,6 +34,9 @@ export default makeRouteConfig(
             Component={Table}
             prepareVariables={params => ({tableId: '59abf1a01710ba3b74718220'})}
             query={tableQuery}
+            render={({Component, props})=>{
+                return <Component table={props.store.table} />
+            }}
         />
     </Route>,
 );
