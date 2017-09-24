@@ -1,0 +1,30 @@
+.seat{
+  display: flex;
+  align-items: center;
+
+  &__avatar{
+    width: 30px;
+    z-index: 5;
+
+    img{
+      width: 5em;
+      border-radius: 50%;
+    }
+  }
+
+  &__stats{
+    border: 1px solid;
+    width: 100px;
+    position: relative;
+    left: 30px;
+    height: 40px;
+    font-size: 0.75em;
+    line-height: 1.25em;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+}

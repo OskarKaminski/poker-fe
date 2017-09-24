@@ -5,7 +5,7 @@ import { graphql } from 'react-relay';
 
 import App from './App';
 import Tables from './app/tables/Tables';
-import Table from './pages/Table/Table';
+import Table from './components/Table/Table';
 
 const tableQuery = graphql`
 query routesTableQuery($tableId: String){
