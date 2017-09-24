@@ -7,12 +7,12 @@ import {
 import TablesItem from './tables-item/TablesItem';
 import './tables.scss'
 
-const Tables = ({store}) => {
-    console.log({'store': store});
+const Tables = ({viewer}) => {
+    console.log({'store': viewer});
     return (
         <div className="game-tables">
             {
-                store.tables.map((table, key) => (
+                viewer.tables.map((table, key) => (
                     <TablesItem key={table.id} table={table}/>
                 ))
             }
@@ -26,7 +26,7 @@ const Tables = ({store}) => {
 export default createFragmentContainer(
     Tables,
     graphql`
-        fragment Tables_store on Store {
+        fragment Tables_viewer on Viewer {
             tables {
                 id
                 ...TablesItem_table

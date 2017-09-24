@@ -4,9 +4,9 @@ import {
     createFragmentContainer
 } from 'react-relay';
 
-const App = ({children, store}) => (
+const App = ({children, viewer}) => (
     <div className="app">
-        Num of users: {store.countUsers}
+        Num of users: {viewer.countUsers}
         {children}
     </div>
 )
@@ -14,7 +14,7 @@ const App = ({children, store}) => (
 export default createFragmentContainer(
     App,
     graphql`
-        fragment App_store on Store {
+        fragment App_viewer on Viewer {
             countUsers
         }
     `

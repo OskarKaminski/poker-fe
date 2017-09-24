@@ -9,7 +9,7 @@ import Table from './pages/Table/Table';
 
 const tableQuery = graphql`
 query routesTableQuery($tableId: String){
-    store {
+    viewer {
         table(id: $tableId){
             ...Table_table
         }
@@ -23,19 +23,21 @@ export default makeRouteConfig(
         Component={App}
         query={graphql`
             query routesAppQuery{
-                store {
-                    ...App_store
+                viewer {
+                    ...App_viewer
                 }
             }
           `}
     >
         <Route
-            path="table"
+            path="table/:id"
             Component={Table}
-            prepareVariables={params => ({tableId: '59abf1a01710ba3b74718220'})}
+            prepareVariables={params => {
+                return {tableId: params.id}
+            }}
             query={tableQuery}
             render={({Component, props})=>{
-                return <Component table={props.store.table} />
+                return <Component table={props.viewer.table} />
             }}
         />
     </Route>,
