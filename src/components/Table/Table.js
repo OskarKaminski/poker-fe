@@ -16,6 +16,7 @@ const Table = ({table}) => (
                         nickname={player.profile.nickname}
                         avatar={player.profile.imgUrl}
                         chips={player.chips}
+                        cards={player.cards}
                         key={player.id}
                     />
                 ))
@@ -36,6 +37,10 @@ export default createFragmentContainer(
                     imgUrl
                 }
                 chips
+                cards{
+                    color
+                    value
+                }
             }
         }
     `

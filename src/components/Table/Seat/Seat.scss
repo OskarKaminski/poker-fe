@@ -12,11 +12,24 @@
     }
   }
 
+  &__cards{
+    position: relative;
+    top: 30px;
+    z-index: 3;
+  }
+
+  &__cards-and-stats{
+    bottom:15px;
+    left: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__stats{
     border: 1px solid;
     width: 100px;
-    position: relative;
-    left: 30px;
     height: 40px;
     font-size: 0.75em;
     line-height: 1.25em;
@@ -26,5 +39,6 @@
     padding: 0 10px;
     display: flex;
     flex-direction: column;
+    z-index: 4;
   }
 }

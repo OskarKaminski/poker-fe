@@ -7,6 +7,15 @@
     height: 70px;
     width: 30px;
     margin: 3px;
+
+    &:first-child{
+        transform: rotate(-10deg);
+        left: 10px;
+    }
+    &:nth-child(2){
+        transform: rotate(10deg);
+        right: 10px;
+    }
 }
 
 .card__left-top-corner,
